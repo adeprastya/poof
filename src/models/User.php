@@ -2,6 +2,17 @@
 
 class User
 {
+  public static function getAll($id)
+  {
+    include_once ('../config/db.php');
+
+    $stmt = mysqli_prepare($conn, "SELECT * FROM user WHERE id = ?");
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+
+    return mysqli_stmt_get_result($stmt)->fetch_assoc();
+  }
+
   public static function create($name, $email, $password)
   {
     include_once ('../config/db.php');

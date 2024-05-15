@@ -31,7 +31,7 @@ class UserController
         session_start();
         $_SESSION['user_id'] = $user['id'];
 
-        header('Location: ../views/dashboard.php');
+        header('Location: ../views/home.php');
       } else {
         header('Location: ../views/login.php?error=invalid');
       }
