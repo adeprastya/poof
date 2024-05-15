@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2024 at 02:01 PM
+-- Generation Time: May 15, 2024 at 11:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `note` (
   `id` int(11) NOT NULL,
-  `created_at` date NOT NULL,
-  `is_favorite` tinyint(1) NOT NULL,
+  `created_at` date NOT NULL DEFAULT current_timestamp(),
+  `is_favorite` tinyint(1) NOT NULL DEFAULT 0,
   `title` varchar(255) DEFAULT NULL,
   `content` varchar(1000) DEFAULT NULL,
   `user_id` int(11) NOT NULL
@@ -45,7 +45,7 @@ CREATE TABLE `note` (
 CREATE TABLE `trash` (
   `id` int(11) NOT NULL,
   `created_at` date NOT NULL,
-  `removed_at` date NOT NULL,
+  `removed_at` date NOT NULL DEFAULT current_timestamp(),
   `is_favorite` tinyint(1) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
   `content` varchar(1000) DEFAULT NULL,
@@ -64,6 +64,13 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `email`, `password`) VALUES
+(12, 'q', 'q@q', '$2y$10$ZgnSUn60jNPmp60YWn8TPuCgQkD4MB52VCCjL5AGZZK4B7.JsM02C');
 
 --
 -- Indexes for dumped tables
@@ -102,7 +109,7 @@ ALTER TABLE `note`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
