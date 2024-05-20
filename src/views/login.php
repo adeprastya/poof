@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poof | Login</title>
-    <link rel="stylesheet" href="./../css/global.css">
+    <link rel="stylesheet" href="./../css/login.css">
   </head>
 
   <body>
     <h1>Login</h1>
 
+    <div class="login-div">
     <form action="../controllers/UserController.php" method="POST">
       <div>
         <label for="email">Email</label>
@@ -23,9 +24,10 @@
       </div>
 
       <button type="submit" name="login">LOGIN</button>
-    </form>
-
+    </form> 
     <a href="logup.php">Create account</a>
+  </div>
+
   </body>
 
 </html>
