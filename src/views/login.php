@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poof | Login</title>
-    <link rel="stylesheet" href="./../css/global.css">
+    <link rel="stylesheet" href="./../css/login.css?v=<?php echo time(); ?>">
   </head>
 
   <body>
@@ -25,7 +25,7 @@
       <button type="submit" name="login">LOGIN</button>
     </form>
 
-    <a href="logup.php">Create account</a>
+    <a href="signup.php">Create account</a>
   </body>
 
 </html>
