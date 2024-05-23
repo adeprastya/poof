@@ -11,6 +11,7 @@
   <body>
     <h1>Login</h1>
 
+    <div class="login-div">
     <form action="../controllers/UserController.php" method="POST">
       <div>
         <label for="email">Email</label>
@@ -23,9 +24,11 @@
       </div>
 
       <button type="submit" name="login">LOGIN</button>
+
     </form>
 
     <a href="signup.php">Create account</a>
+    
   </body>
 
 </html>

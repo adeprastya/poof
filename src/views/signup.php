@@ -11,6 +11,7 @@
   <body>
     <h1>Sign Up</h1>
 
+    <div class="login-div">
     <form action="../controllers/UserController.php" method="POST">
       <div>
         <label for="name">Name</label>
@@ -29,6 +30,7 @@
 
       <button type="submit" name="signup">SIGN UP</button>
     </form>
+  </div>
   </body>
 
 </html>
