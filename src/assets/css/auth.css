@@ -1,0 +1,90 @@
+@import "./global.css";
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	min-height: 100vh;
+	overflow: hidden;
+
+	background: linear-gradient(110deg, var(--color-main-1), var(--color-main-2), var(--color-main-3));
+}
+
+.title {
+	display: block;
+	position: fixed;
+	top: 5px;
+	left: 5px;
+	background-color: #00000030;
+	padding: 5px 8px;
+	border-radius: 5px;
+
+	font: lighter 12px var(--font-1);
+	letter-spacing: 0.5px;
+	color: var(--color-light-1);
+	text-transform: uppercase;
+}
+
+.card {
+	box-sizing: border-box;
+	padding: 30px 40px;
+	border-radius: 25px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+
+	color: var(--color-dark-1);
+	background-color: var(--color-light-1);
+
+	h1 {
+		font: bold 32px var(--font-1);
+		letter-spacing: 0.5px;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+
+		div {
+			display: flex;
+			flex-direction: column;
+			font: 16px var(--font-1);
+
+			input {
+				padding: 8px;
+				border-radius: 5px;
+				border: 2px solid var(--color-main-2);
+				width: clamp(200px, 80vw, 400px);
+			}
+		}
+
+		button {
+			border: none;
+			padding: 8px;
+			border-radius: 5px;
+			background: linear-gradient(110deg, var(--color-main-1), var(--color-main-2), var(--color-main-3));
+			background-size: 150%;
+
+			font: 16px var(--font-1);
+			letter-spacing: 1px;
+			color: var(--color-light-1);
+
+			transition: all 0.3s ease;
+			cursor: pointer;
+
+			&:hover {
+				background-position: right;
+				transition: all 0.3s ease;
+			}
+		}
+	}
+
+	a {
+		font: 16px var(--font-1);
+		color: var(--color-dark-1);
+	}
+}

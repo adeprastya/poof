@@ -21,11 +21,16 @@ include_once ('../models/Note.php');
   </head>
 
   <body>
-    <nav>
+    <header>
       <h1>Home</h1>
 
+      <nav>
+        <a href="./home.php">Home</a>
+        <a href="./trash.php">Trash</a>
+      </nav>
+
       <a href="./logout.php">Logout</a>
-    </nav>
+    </header>
 
     <main>
       <h2>Welcome, <?= User::getAll($_SESSION['user_id'])['name'] ?></h2>
