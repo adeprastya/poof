@@ -27,5 +27,4 @@
 
     <a href="logup.php">Create account</a>
   </body>
-
 </html>
