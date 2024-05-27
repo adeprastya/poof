@@ -47,6 +47,11 @@ include_once ('../models/Note.php');
           <label for="content">Content</label>
           <input type="text" name="content" id="content">
         </div>
+    
+        <div>
+                <label for="shared_user_id">Share with</label>
+                <input type="text" name="shared_user_id" id="shared_user_id">
+            </div>
 
         <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?>">
 
