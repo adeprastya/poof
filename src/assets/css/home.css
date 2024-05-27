@@ -1,0 +1,92 @@
+@import "./global.css";
+
+body {
+	background-color: var(--color-light-2);
+	font-family: var(--font-1);
+}
+
+header {
+	box-sizing: border-box;
+	z-index: 10;
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	gap: 5vh;
+
+	height: 100vh;
+	width: clamp(200px, 18vw, 250px);
+	padding: 20px 15px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	background: linear-gradient(110deg, var(--color-main-1), var(--color-main-2), var(--color-main-3));
+	color: var(--color-light-1);
+
+	transition: all 0.5s ease-in-out;
+
+	&.closed {
+		transform: translateX(-90%);
+		border-radius: 0;
+	}
+
+	div {
+		h1 {
+			font: bold 24px var(--font-1);
+		}
+
+		span {
+			position: absolute;
+			right: 10px;
+			top: 10px;
+
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+
+			background-color: #ffffff48;
+			cursor: pointer;
+		}
+	}
+
+	nav {
+		display: flex;
+		flex-direction: column;
+		gap: 2.5vh;
+
+		a {
+			display: block;
+			padding: 5px 10px;
+			border-radius: 5px;
+
+			font: 20px var(--font-1);
+			letter-spacing: 0.5px;
+			text-decoration: none;
+			color: var(--color-light-1);
+
+			transition: all 0.5s ease;
+
+			&:hover {
+				background-color: #ffffff48;
+			}
+		}
+	}
+
+	> a {
+		display: block;
+		margin: auto auto 0;
+		padding: 5px 15px;
+		border: 2px solid rgb(255, 97, 97);
+		border-radius: 5px;
+		background-color: rgba(255, 97, 97, 0.367);
+
+		font: 16px var(--font-1);
+		letter-spacing: 1px;
+		text-decoration: none;
+		color: var(--color-light-1);
+
+		transition: all 0.5s ease;
+
+		&:hover {
+			background-color: rgba(255, 97, 97, 0.788);
+		}
+	}
+}

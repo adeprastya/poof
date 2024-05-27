@@ -138,5 +138,7 @@ table {
 	--color-main-2: #589af1;
 	--color-main-3: #e9bcee;
 
+	--color-danger-1: rgb(255, 57, 57);
+
 	--font-1: "Arial", sans-serif;
 }

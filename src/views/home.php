@@ -18,11 +18,16 @@ include_once ('../models/Note.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poof | Home</title>
+    <link rel="stylesheet" href="../assets/css/home.css">
   </head>
 
   <body>
-    <header>
-      <h1>Home</h1>
+    <header id="nav">
+      <div>
+        <h1>Home</h1>
+
+        <span id="nav-close">x</span>
+      </div>
 
       <nav>
         <a href="./home.php">Home</a>
@@ -47,11 +52,11 @@ include_once ('../models/Note.php');
           <label for="content">Content</label>
           <input type="text" name="content" id="content">
         </div>
-    
+
         <div>
-                <label for="shared_user_id">Share with</label>
-                <input type="text" name="shared_user_id" id="shared_user_id">
-            </div>
+          <label for="shared_user_id">Share with</label>
+          <input type="text" name="shared_user_id" id="shared_user_id">
+        </div>
 
         <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?>">
 
@@ -77,6 +82,8 @@ include_once ('../models/Note.php');
         ?>
       </div>
     </main>
+
+    <script type="module" src="../assets/js/home.js"></script>
   </body>
 
 </html>
