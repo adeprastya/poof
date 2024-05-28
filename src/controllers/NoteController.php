@@ -20,6 +20,10 @@ class NoteController
     }
   }
 
+  public function add_collab(){
+    
+  }
+
   public function update_note()
   {
     if (isset($_GET['update_note'])) {
