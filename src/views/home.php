@@ -8,6 +8,8 @@ if (!isset($_SESSION['user_id'])) {
 
 include_once ('../models/User.php');
 include_once ('../models/Note.php');
+include_once ('../components/Header.php');
+include_once ('../components/Note.php');
 
 ?>
 
@@ -18,66 +20,37 @@ include_once ('../models/Note.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poof | Home</title>
-    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/home.css?v=<?= time() ?>">
   </head>
 
   <body>
-    <header id="nav">
-      <div>
-        <h1>Home</h1>
-
-        <span id="nav-close">x</span>
-      </div>
-
-      <nav>
-        <a href="./home.php">Home</a>
-        <a href="./trash.php">Trash</a>
-      </nav>
-
-      <a href="./logout.php">Logout</a>
-    </header>
+    <?= Headers() ?>
 
     <main>
       <h2>Welcome, <?= User::getAll($_SESSION['user_id'])['name'] ?></h2>
 
-      <form action="../controllers/NoteController.php" method="POST">
-        <h3>New Note</h3>
+      <div class="container">
+        <form action="../controllers/NoteController.php" method="POST">
+          <div>
+            <input type="text" name="title" id="title" placeholder="Title">
+          </div>
 
-        <div>
-          <label for="title">Title</label>
-          <input type="text" name="title" id="title">
-        </div>
+          <div>
+            <input type="text" name="content" id="content" placeholder="Content">
+          </div>
 
-        <div>
-          <label for="content">Content</label>
-          <input type="text" name="content" id="content">
-        </div>
+          <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?>">
 
-        <div>
-          <label for="shared_user_id">Share with</label>
-          <input type="text" name="shared_user_id" id="shared_user_id">
-        </div>
-
-        <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?>">
-
-        <button type="submit" name="new_note">NEW NOTE</button>
-      </form>
-
-      <div>
-        <h3>Notes</h3>
+          <button type="submit" name="new_note">NEW NOTE</button>
+        </form>
 
         <?php
         $notes = Note::getAll($_SESSION['user_id']);
 
         if ($notes) {
           foreach ($notes as $note) {
-            echo "<div>" . $note['title'] . " - " . $note['content'] .
-              "<a href='../controllers/NoteController.php?update_note=" . $note['id'] . "'>Update</a>" .
-              "<a href='../controllers/NoteController.php?delete_note=" . $note['id'] . "'>Delete</a>"
-              . "</div>";
+            echo Note($note, 'NOTE');
           }
-        } else {
-          echo "<div>No notes found</div>";
         }
         ?>
       </div>

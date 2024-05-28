@@ -13,4 +13,5 @@ navClose.addEventListener("click", () => {
 	} else {
 		nav.classList.add("closed");
 	}
+	console.log("ok");
 });

@@ -3,9 +3,9 @@ include_once ('../models/User.php');
 
 class UserController
 {
-  public function logup()
+  public function signup()
   {
-    if (isset($_POST['logup'])) {
+    if (isset($_POST['signup'])) {
       $name = $_POST['name'];
       $email = $_POST['email'];
       $password = $_POST['password'];
@@ -15,7 +15,7 @@ class UserController
       if ($user) {
         header('Location: ../views/login.php?success=created');
       } else {
-        header('Location: ../views/logup.php?error=failed');
+        header('Location: ../views/signup.php?error=failed');
       }
     }
   }
@@ -40,5 +40,5 @@ class UserController
 }
 
 $userController = new UserController();
-$userController->logup();
+$userController->signup();
 $userController->login();

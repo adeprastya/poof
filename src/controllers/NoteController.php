@@ -9,9 +9,8 @@ class NoteController
       $title = $_POST['title'];
       $content = $_POST['content'];
       $user_id = $_POST['user_id'];
-      $shared_user_id = $_POST['shared_user_id'];
 
-      $note = Note::create($title, $content, $user_id, $shared_user_id);
+      $note = Note::create($title, $content, $user_id);
 
       if ($note) {
         header('Location: ../views/home.php?success=created');
