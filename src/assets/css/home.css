@@ -24,7 +24,7 @@ header {
 	transition: all 0.5s ease-in-out;
 
 	&.closed {
-		transform: translateX(-90%);
+		transform: translateX(-80%);
 		border-radius: 0;
 	}
 
@@ -92,13 +92,19 @@ header {
 }
 
 main {
-	padding: 30px 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+	padding: 30px;
 
 	.container {
 		display: flex;
 		flex-direction: column;
 		gap: 30px;
+		margin-left: calc(10vw - 37px);
 		padding: 20px;
+		width: clamp(300px, 85vw, 850px);
 		border-radius: 15px;
 		background: var(--color-light-1);
 
@@ -111,7 +117,8 @@ main {
 			padding: 10px;
 
 			div {
-				input {
+				input, textarea {
+					width: 100%;
 					border: none;
 					overflow: visible;
 					background-color: transparent;
@@ -125,6 +132,11 @@ main {
 						letter-spacing: 0.5px;
 						color: #0000007c;
 					}
+				}
+
+				textarea {
+					font: 16px var(--font-1);
+					resize: none;
 				}
 			}
 

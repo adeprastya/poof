@@ -36,7 +36,7 @@ include_once ('../components/Note.php');
           </div>
 
           <div>
-            <input type="text" name="content" id="content" placeholder="Content">
+            <textarea rows="4" type="text" name="content" id="content" placeholder="Content"></textarea>
           </div>
 
           <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?>">
