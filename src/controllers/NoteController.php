@@ -21,7 +21,20 @@ class NoteController
   }
 
   public function add_collab(){
-    
+    if (isset($_POST['add_collaborator'])) {
+      $note_id = $_POST['note_id'];
+      $collaborator_id = $_POST['collaborator_id'];
+
+      $note = Note::find($note_id);
+      if ($note) {
+          $note->collaborators()->attach($collaborator_id);
+
+          header('Location: ../views/home.php?success=collaborator_added');
+      } else {
+          header('Location: ../views/home.php?error=note_not_found');
+      }
+  }
+
   }
 
   public function update_note()
