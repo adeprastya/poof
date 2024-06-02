@@ -4,7 +4,7 @@ class User
 {
   public static function getAll($id)
   {
-    include_once ('../config/db.php');
+    include ('../config/db.php');
 
     $stmt = mysqli_prepare($conn, "SELECT * FROM user WHERE id = ?");
     mysqli_stmt_bind_param($stmt, "i", $id);
@@ -15,7 +15,7 @@ class User
 
   public static function create($name, $email, $password)
   {
-    include_once ('../config/db.php');
+    include ('../config/db.php');
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -28,7 +28,7 @@ class User
 
   public static function authenticate($email, $password)
   {
-    include_once ('../config/db.php');
+    include ('../config/db.php');
 
     $stmt = mysqli_prepare($conn, "SELECT * FROM user WHERE email = ?");
     mysqli_stmt_bind_param($stmt, "s", $email);
@@ -40,6 +40,23 @@ class User
       if (password_verify($password, $user['password'])) {
         return $user;
       }
+    }
+
+    return false;
+  }
+
+  public static function getId($query)
+  {
+    include ('../config/db.php');
+
+    $stmt = mysqli_prepare($conn, "SELECT id FROM user WHERE email = ?");
+    mysqli_stmt_bind_param($stmt, "s", $query);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    if ($user = $result->fetch_assoc()) {
+      return $user['id'];
     }
 
     return false;

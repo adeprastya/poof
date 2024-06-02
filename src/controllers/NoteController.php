@@ -1,5 +1,6 @@
 <?php
 include_once ('../models/Note.php');
+include_once ('../models/User.php');
 
 class NoteController
 {
@@ -18,23 +19,6 @@ class NoteController
         header('Location: ../views/home.php?error=failed');
       }
     }
-  }
-
-  public function add_collab(){
-    if (isset($_POST['add_collaborator'])) {
-      $note_id = $_POST['note_id'];
-      $collaborator_id = $_POST['collaborator_id'];
-
-      $note = Note::find($note_id);
-      if ($note) {
-          $note->collaborators()->attach($collaborator_id);
-
-          header('Location: ../views/home.php?success=collaborator_added');
-      } else {
-          header('Location: ../views/home.php?error=note_not_found');
-      }
-  }
-
   }
 
   public function update_note()
@@ -68,9 +52,33 @@ class NoteController
       }
     }
   }
+
+  public function add_collab()
+  {
+    if (isset($_POST['add_collab'])) {
+      $note_id = $_POST['add_collab'];
+      $collab_email = $_POST['collab_email'];
+
+      $user_id = User::getId($collab_email);
+
+      if (!$user_id) {
+        header('Location: ../views/home.php?error=email_not_found');
+        exit;
+      }
+
+      $add_collab = Note::addCollab($note_id, $user_id);
+
+      if ($add_collab) {
+        header('Location: ../views/home.php?success=new_collaborator_added');
+      } else {
+        header('Location: ../views/home.php?error=failed_add_collab');
+      }
+    }
+  }
 }
 
 $noteController = new NoteController();
 $noteController->new_note();
 $noteController->update_note();
 $noteController->delete_note();
+$noteController->add_collab();

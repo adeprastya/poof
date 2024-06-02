@@ -13,9 +13,9 @@ class UserController
       $user = User::create($name, $email, $password);
 
       if ($user) {
-        header('Location: ../views/login.php?success=created');
+        header('Location: ../views/auth.php?success=created');
       } else {
-        header('Location: ../views/signup.php?error=failed');
+        header('Location: ../views/auth.php?error=failed');
       }
     }
   }
@@ -33,7 +33,7 @@ class UserController
 
         header('Location: ../views/home.php');
       } else {
-        header('Location: ../views/login.php?error=invalid');
+        header('Location: ../views/auth.php?error=invalid');
       }
     }
   }

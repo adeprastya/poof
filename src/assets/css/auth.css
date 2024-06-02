@@ -26,7 +26,12 @@ body {
 	text-transform: uppercase;
 }
 
+#signup-card {
+	transform: translateY(100vh);
+}
+
 .card {
+	position: fixed;
 	box-sizing: border-box;
 	padding: 30px 40px;
 	border-radius: 25px;
@@ -38,6 +43,9 @@ body {
 
 	color: var(--color-dark-1);
 	background-color: var(--color-light-1);
+	box-shadow: 0 0 10px #00000035;
+
+	transition: all 1s ease;
 
 	h1 {
 		font: bold 32px var(--font-1);
@@ -83,8 +91,9 @@ body {
 		}
 	}
 
-	a {
+	p {
 		font: 16px var(--font-1);
 		color: var(--color-dark-1);
+		cursor: pointer;
 	}
 }

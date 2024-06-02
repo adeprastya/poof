@@ -10,6 +10,7 @@ include_once ('../models/User.php');
 include_once ('../models/Note.php');
 include_once ('../components/Header.php');
 include_once ('../components/Note.php');
+include_once ('../components/AddCollabModal.php');
 
 ?>
 
@@ -49,12 +50,17 @@ include_once ('../components/Note.php');
 
         if ($notes) {
           foreach ($notes as $note) {
-            echo Note($note, 'NOTE');
+            echo Note($note, $_SESSION['user_id']); 
           }
         }
         ?>
       </div>
     </main>
+
+    <?php
+    if (isset($_GET['add_collab']))
+      echo AddCollabModal($_GET['add_collab']);
+    ?>
 
     <script type="module" src="../assets/js/home.js"></script>
   </body>

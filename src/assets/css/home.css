@@ -23,11 +23,6 @@ header {
 
 	transition: all 0.5s ease-in-out;
 
-	&.closed {
-		transform: translateX(-80%);
-		border-radius: 0;
-	}
-
 	div {
 		h1 {
 			font: bold 24px var(--font-1);
@@ -92,19 +87,21 @@ header {
 }
 
 main {
+	width: 100vw;
+	min-height: 100vh;
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 30px;
-	padding: 30px;
 
 	.container {
 		display: flex;
 		flex-direction: column;
 		gap: 30px;
-		margin-left: calc(10vw - 37px);
+		margin-left: calc(15vw - 35px);
 		padding: 20px;
-		width: clamp(300px, 85vw, 850px);
+		width: clamp(200px, 75vw, 700px);
 		border-radius: 15px;
 		background: var(--color-light-1);
 
@@ -117,7 +114,8 @@ main {
 			padding: 10px;
 
 			div {
-				input, textarea {
+				input,
+				textarea {
 					width: 100%;
 					border: none;
 					overflow: visible;
@@ -189,8 +187,15 @@ main {
 			gap: 10px;
 			padding: 10px;
 
+			.collaborators {
+				margin: 0;
+				font: 14px var(--font-1);
+				color: var(--color-dark-3);
+			}
+
 			h6 {
 				border-bottom: 2px solid #0000003d;
+				margin: 0 0 10px 0;
 
 				font: bold 20px var(--font-1);
 				letter-spacing: 0.5px;
@@ -200,6 +205,118 @@ main {
 			p {
 				font: 18px var(--font-1);
 				color: var(--color-dark-2);
+				margin: 0 0 50px 0;
+			}
+
+			.actions {
+				display: flex;
+				justify-content: space-between;
+
+				a {
+					padding: 4px 8px;
+					border-radius: 4px;
+
+					font: bold 14px var(--font-1);
+					text-decoration: none;
+					color: var(--color-dark-1);
+
+					transition: all 0.3s ease;
+
+					&.add-collab {
+						border: 2px solid var(--color-main-1);
+
+						&:hover {
+							background-color: var(--color-main-1);
+							color: var(--color-light-1);
+						}
+					}
+					&.update {
+						border: 2px solid var(--color-main-2);
+
+						&:hover {
+							background-color: var(--color-main-2);
+							color: var(--color-light-1);
+						}
+					}
+					&.delete {
+						border: 2px solid var(--color-main-3);
+
+						&:hover {
+							background-color: var(--color-main-3);
+							color: var(--color-light-1);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.add-collab-modal {
+	width: clamp(300px, 30vw, 400px);
+	padding: 20px 30px;
+	border-radius: 10px;
+
+	z-index: 20;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	background-color: var(--color-light-1);
+	box-shadow: 0 0 10px #00000035;
+
+	a {
+		position: absolute;
+		top: 5px;
+		right: 10px;
+		text-decoration: none;
+		color: var(--color-dark-1);
+	}
+
+	h3 {
+		font: bold 20px var(--font-1);
+		letter-spacing: 0.5px;
+		margin: 0 0 10px 0;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 20px;
+
+		input {
+			padding: 0 5px;
+			font: 16px var(--font-1);
+			min-height: 24px;
+			border: 2px solid var(--color-main-3);
+			border-radius: 4px;
+
+			&::placeholder {
+				font: 16px var(--font-1);
+			}
+		}
+
+		button {
+			padding: 6px;
+			border: none;
+			border-radius: 4px;
+			background: linear-gradient(110deg, var(--color-main-1), var(--color-main-2), var(--color-main-3));
+			background-size: 200%;
+			font: 16px var(--font-1);
+			letter-spacing: 0.5px;
+			color: var(--color-light-1);
+			cursor: pointer;
+			transition: all 0.5s ease;
+
+			&:hover {
+				background-position: right;
 			}
 		}
 	}

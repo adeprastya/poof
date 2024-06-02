@@ -15,7 +15,7 @@ class Trash
 
   public static function create($title, $content, $user_id)
   {
-    include_once ('../config/db.php');
+    include ('../config/db.php');
 
     $stmt = mysqli_prepare($conn, "INSERT INTO note (title, content, user_id) VALUES (?, ?, ?)");
     mysqli_stmt_bind_param($stmt, "ssi", $title, $content, $user_id);
@@ -26,7 +26,7 @@ class Trash
 
   public static function update($title, $content, $id)
   {
-    include_once ('../config/db.php');
+    include ('../config/db.php');
 
     $stmt = mysqli_prepare($conn, "UPDATE note SET title = ?, content = ? WHERE id = ?");
     mysqli_stmt_bind_param($stmt, "ssi", $title, $content, $id);
@@ -37,7 +37,7 @@ class Trash
 
   public static function delete($id)
   {
-    include_once ('../config/db.php');
+    include ('../config/db.php');
 
     $stmt = mysqli_prepare($conn, "DELETE FROM note WHERE id = ?");
     mysqli_stmt_bind_param($stmt, "i", $id);
