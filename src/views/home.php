@@ -11,6 +11,7 @@ include_once ('../models/Note.php');
 include_once ('../components/Header.php');
 include_once ('../components/Note.php');
 include_once ('../components/AddCollabModal.php');
+include_once ('../components/UpdateNote.php');
 
 ?>
 
@@ -56,6 +57,17 @@ include_once ('../components/AddCollabModal.php');
         ?>
       </div>
     </main>
+
+    
+    <?php
+    if (isset($_GET['update_note'])) {
+        $note_id = $_GET['update_note'];
+        $note = Note::findById($note_id);
+        if ($note) {
+            echo UpdateNote($note);
+        }
+    }
+    ?>
 
     <?php
     if (isset($_GET['add_collab']))
