@@ -2,7 +2,7 @@
 function AddCollabModal($noteId)
 {
   return '
-  <div class="add-collab-modal">
+  <div class="modal collab-modal">
     <h3>Add Collaborator</h3>
     
     <a href="home.php">x</a>

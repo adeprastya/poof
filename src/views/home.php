@@ -11,7 +11,7 @@ include_once ('../models/Note.php');
 include_once ('../components/Header.php');
 include_once ('../components/Note.php');
 include_once ('../components/AddCollabModal.php');
-include_once ('../components/UpdateNote.php');
+include_once ('../components/UpdateModal.php');
 
 ?>
 
@@ -51,22 +51,17 @@ include_once ('../components/UpdateNote.php');
 
         if ($notes) {
           foreach ($notes as $note) {
-            echo Note($note, $_SESSION['user_id']); 
+            echo Note($note, $_SESSION['user_id']);
           }
         }
         ?>
       </div>
     </main>
 
-    
+
     <?php
-    if (isset($_GET['update_note'])) {
-        $note_id = $_GET['update_note'];
-        $note = Note::findById($note_id);
-        if ($note) {
-            echo UpdateNote($note);
-        }
-    }
+    if (isset($_GET['update_note']))
+      echo UpdateModal($_GET['update_note']);
     ?>
 
     <?php

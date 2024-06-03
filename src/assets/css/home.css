@@ -3,6 +3,8 @@
 body {
 	background-color: var(--color-light-2);
 	font-family: var(--font-1);
+
+	overflow-x: hidden;
 }
 
 header {
@@ -89,11 +91,14 @@ header {
 main {
 	width: 100vw;
 	min-height: 100vh;
+	background: var(--color-light-1);
 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 30px;
+
+	transition: filter 0.5s linear;
 
 	.container {
 		display: flex;
@@ -103,7 +108,6 @@ main {
 		padding: 20px;
 		width: clamp(200px, 75vw, 700px);
 		border-radius: 15px;
-		background: var(--color-light-1);
 
 		form {
 			border-radius: 8px;
@@ -252,9 +256,9 @@ main {
 	}
 }
 
-.add-collab-modal {
-	width: clamp(300px, 30vw, 400px);
-	padding: 20px 30px;
+.modal {
+	width: clamp(300px, 70vw, 750px);
+	padding: 50px 30px;
 	border-radius: 10px;
 
 	z-index: 20;
@@ -280,43 +284,122 @@ main {
 	}
 
 	h3 {
-		font: bold 20px var(--font-1);
+		font: bold 24px var(--font-1);
 		letter-spacing: 0.5px;
-		margin: 0 0 10px 0;
+		margin: 0 0 30px 0;
 	}
 
-	form {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		gap: 20px;
+	button {
+		padding: 6px;
+		border: none;
+		border-radius: 4px;
+		background: linear-gradient(110deg, var(--color-main-1), var(--color-main-2), var(--color-main-3));
+		background-size: 200%;
+		font: 16px var(--font-1);
+		letter-spacing: 0.5px;
+		color: var(--color-light-1);
+		cursor: pointer;
+		transition: all 0.5s ease;
 
-		input {
-			padding: 0 5px;
-			font: 16px var(--font-1);
-			min-height: 24px;
-			border: 2px solid var(--color-main-3);
-			border-radius: 4px;
+		&:hover {
+			background-position: right;
+		}
+	}
 
-			&::placeholder {
+	&.collab-modal {
+		form {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			gap: 20px;
+
+			input {
+				padding: 0 10px;
 				font: 16px var(--font-1);
+				min-height: 24px;
+				border: 2px solid var(--color-main-3);
+				border-radius: 4px;
+
+				&::placeholder {
+					font: 16px var(--font-1);
+				}
 			}
 		}
+	}
 
-		button {
-			padding: 6px;
-			border: none;
-			border-radius: 4px;
-			background: linear-gradient(110deg, var(--color-main-1), var(--color-main-2), var(--color-main-3));
-			background-size: 200%;
-			font: 16px var(--font-1);
-			letter-spacing: 0.5px;
-			color: var(--color-light-1);
-			cursor: pointer;
-			transition: all 0.5s ease;
+	&.update-modal {
+		form {
+			width: 100%;
+			border-radius: 8px;
+			border: 3px solid var(--color-dark-3);
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			padding: 10px;
 
-			&:hover {
-				background-position: right;
+			div {
+				input,
+				textarea {
+					width: 100%;
+					border: none;
+					overflow: visible;
+					background-color: transparent;
+					color: var(--color-dark-1);
+
+					&:focus {
+						outline: none;
+					}
+
+					&::placeholder {
+						letter-spacing: 0.5px;
+						color: #0000007c;
+					}
+				}
+
+				textarea {
+					font: 16px var(--font-1);
+					resize: none;
+				}
+			}
+
+			div:nth-child(1) {
+				border-bottom: 2px solid #0000003d;
+				& input {
+					height: 24px;
+					font: 20px var(--font-1);
+					&::placeholder {
+						font: 20px var(--font-1);
+					}
+				}
+			}
+
+			div:nth-child(2) {
+				& input {
+					min-height: 24px;
+					font: 18px var(--font-1);
+					&::placeholder {
+						font: 18px var(--font-1);
+					}
+				}
+			}
+
+			button {
+				padding: 6px;
+				border: none;
+				border-radius: 4px;
+				background: linear-gradient(110deg, var(--color-main-1), var(--color-main-2), var(--color-main-3));
+				background-size: 200%;
+
+				font: 16px var(--font-1);
+				letter-spacing: 0.5px;
+				color: var(--color-light-1);
+
+				cursor: pointer;
+				transition: all 0.5s ease;
+
+				&:hover {
+					background-position: right;
+				}
 			}
 		}
 	}

@@ -76,12 +76,12 @@ class Note
     return mysqli_stmt_affected_rows($stmt2);
   }
   
-  public static function findById($id)
+  public static function getNote($note_id)
   {
       include ('../config/db.php');
 
       $stmt = mysqli_prepare($conn, "SELECT * FROM note WHERE id = ?");
-      mysqli_stmt_bind_param($stmt, "i", $id);
+      mysqli_stmt_bind_param($stmt, "i", $note_id);
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
 

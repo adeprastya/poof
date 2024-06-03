@@ -10,22 +10,22 @@ const AppState = {
 function restyle() {
 	if (AppState.isMobile && AppState.navOpen) {
 		nav.style.transform = "translateX(0)";
-		nav.style.borderRadius = "0 0 0 10px";
+		nav.style.borderRadius = "0 20px 20px 0";
 
 		main.style.filter = "blur(4px)";
 	} else if (AppState.isMobile && !AppState.navOpen) {
 		nav.style.transform = "translateX(-75%)";
-		nav.style.borderRadius = "0 0 0 0";
+		nav.style.borderRadius = "0 0";
 
 		main.style.filter = "none";
 	} else if (!AppState.isMobile && AppState.navOpen) {
 		nav.style.transform = "translateX(0)";
-		nav.style.borderRadius = "0 0 10px 0";
+		nav.style.borderRadius = "0 20px 20px 0";
 
 		main.style.filter = "none";
 	} else if (!AppState.isMobile && !AppState.navOpen) {
 		nav.style.transform = "translateX(-75%)";
-		nav.style.borderRadius = "0 0 0 0";
+		nav.style.borderRadius = "0 0";
 
 		main.style.filter = "none";
 	}

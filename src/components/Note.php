@@ -4,6 +4,7 @@ include_once ('../models/User.php');
 function Note($note, $user_id)
 {
   $type = "NOTE";
+
   $note_owner = User::getAll($note['user_id']);
 
   $collaborators = explode(',', $note['collaborator_id']);
@@ -33,7 +34,7 @@ function Note($note, $user_id)
           <p>" . htmlspecialchars($note['content']) . "</p>
           
           <div class='actions'>
-            <a class='update' href='../controllers/NoteController.php?update_note=" . urlencode($note['id']) . "'>Update</a>
+            <a class='update' href='home.php?update_note=" . urlencode($note['id']) . "'>Update</a>
           </div>
         </div>";
 
@@ -49,7 +50,7 @@ function Note($note, $user_id)
               <div class='actions'>
                 <a class='add-collab' href='home.php?add_collab=" . urlencode($note['id']) . "'>Add Collaborator</a>
     
-                <a class='update' href='../controllers/NoteController.php?update_note=" . urlencode($note['id']) . "'>Update</a>
+                <a class='update' href='home.php?update_note=" . urlencode($note['id']) . "'>Update</a>
     
                 <a class='delete' href='../controllers/NoteController.php?delete_note=" . urlencode($note['id']) . "'>Delete</a>
               </div>
@@ -65,7 +66,7 @@ function Note($note, $user_id)
           <div class='actions'>
             <a class='add-collab' href='home.php?add_collab=" . urlencode($note['id']) . "'>Add Collaborator</a>
 
-            <a class='update' href='../controllers/NoteController.php?update_note=" . urlencode($note['id']) . "'>Update</a>
+            <a class='update' href='home.php?update_note=" . urlencode($note['id']) . "'>Update</a>
 
             <a class='delete' href='../controllers/NoteController.php?delete_note=" . urlencode($note['id']) . "'>Delete</a>
           </div>

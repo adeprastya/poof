@@ -23,10 +23,10 @@ class NoteController
 
   public function update_note()
   {
-    if (isset($_GET['update_note'])) {
+    if (isset($_POST['update_note'])) {
       $title = $_POST['title'];
       $content = $_POST['content'];
-      $id = $_GET['update_note'];
+      $id = $_POST['update_note'];
 
       $note = Note::update($title, $content, $id);
 
