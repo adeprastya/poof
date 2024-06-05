@@ -1,5 +1,6 @@
 <?php
 include_once ('../models/Note.php');
+include_once ('../models/Trash.php');
 include_once ('../models/User.php');
 
 class NoteController
@@ -43,9 +44,12 @@ class NoteController
     if (isset($_GET['delete_note'])) {
       $id = $_GET['delete_note'];
 
-      $note = Note::delete($id);
+      $note_trashed = Note::getData($id);
 
-      if ($note) {
+      Trash::create($note_trashed['type'], $note_trashed['created_at'], $note_trashed['is_favorite'], $note_trashed['title'], $note_trashed['content'], $note_trashed['user_id']);
+
+      $delete = Note::delete($id);
+      if ($delete) {
         header('Location: ../views/home.php?success=deleted');
       } else {
         header('Location: ../views/home.php?error=failed');

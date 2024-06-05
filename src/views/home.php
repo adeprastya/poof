@@ -26,7 +26,7 @@ include_once ('../components/UpdateModal.php');
   </head>
 
   <body>
-    <?= Headers() ?>
+    <?= Headers("home") ?>
 
     <main>
       <h2>Welcome, <?= User::getAll($_SESSION['user_id'])['name'] ?></h2>
