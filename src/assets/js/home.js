@@ -1,5 +1,6 @@
-const nav = document.getElementById("nav");
-const navClose = document.getElementById("nav-close");
+const navToggle = document.getElementById("nav-toggle");
+const vertical = document.querySelector(".vertical");
+const horizontal = document.querySelector(".horizontal");
 const main = document.querySelector("main");
 
 const AppState = {
@@ -9,23 +10,39 @@ const AppState = {
 
 function restyle() {
 	if (AppState.isMobile && AppState.navOpen) {
-		nav.style.transform = "translateX(0)";
-		nav.style.borderRadius = "0 20px 20px 0";
+		navToggle.style.transform = "rotate(540deg)";
+
+		vertical.style.transform = "translateX(0)";
+
+		horizontal.style.width = "calc(100vw - clamp(200px, 18vw, 250px)";
+		horizontal.style.filter = "blur(2px) brightness(80%)";
 
 		main.style.filter = "blur(4px)";
 	} else if (AppState.isMobile && !AppState.navOpen) {
-		nav.style.transform = "translateX(-75%)";
-		nav.style.borderRadius = "0 0";
+		navToggle.style.transform = "rotate(0deg)";
+
+		vertical.style.transform = "translateX(-75%)";
+
+		horizontal.style.width = "calc(100vw - clamp(200px, 18vw, 250px) + calc(clamp(200px, 18vw, 250px) / 100 * 75)";
+		horizontal.style.filter = "none";
 
 		main.style.filter = "none";
 	} else if (!AppState.isMobile && AppState.navOpen) {
-		nav.style.transform = "translateX(0)";
-		nav.style.borderRadius = "0 20px 20px 0";
+		navToggle.style.transform = "rotate(540deg)";
+
+		vertical.style.transform = "translateX(0)";
+
+		horizontal.style.width = "calc(100vw - clamp(200px, 18vw, 250px)";
+		horizontal.style.filter = "none";
 
 		main.style.filter = "none";
 	} else if (!AppState.isMobile && !AppState.navOpen) {
-		nav.style.transform = "translateX(-75%)";
-		nav.style.borderRadius = "0 0";
+		navToggle.style.transform = "rotate(0deg)";
+
+		vertical.style.transform = "translateX(-75%)";
+
+		horizontal.style.width = "calc(100vw - clamp(200px, 18vw, 250px) + calc(clamp(200px, 18vw, 250px) / 100 * 75)";
+		horizontal.style.filter = "none";
 
 		main.style.filter = "none";
 	}
@@ -39,7 +56,7 @@ window.addEventListener("resize", () => {
 	restyle();
 });
 
-navClose.addEventListener("click", () => {
+navToggle.addEventListener("click", () => {
 	AppState.navOpen = !AppState.navOpen;
 
 	restyle();

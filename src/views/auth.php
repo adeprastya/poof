@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poof | Login</title>
     <link rel="stylesheet" href="../assets/css/auth.css?v=<?= time() ?>">
+
+    <script src="https://cdn.jsdelivr.net/npm/kursor@0.0.14/dist/kursor.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
   </head>
 
   <body>
-    <h2 class="title">Poof</h2>
+    <h2 class="hero">Poof</h2>
 
     <div class="card" id="login-card">
       <h1>Login</h1>
@@ -57,6 +60,13 @@
     </div>
 
     <script src="../assets/js/auth.js"></script>
+    <script>
+      new kursor({
+        type: 4,
+        removeDefaultCursor: true,
+        color: '#fff'
+      })
+    </script>
   </body>
 
 </html>

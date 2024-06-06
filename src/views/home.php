@@ -23,6 +23,9 @@ include_once ('../components/UpdateModal.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poof | Home</title>
     <link rel="stylesheet" href="../assets/css/home.css?v=<?= time() ?>">
+
+    <script src="https://cdn.jsdelivr.net/npm/kursor@0.0.14/dist/kursor.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
   </head>
 
   <body>
@@ -70,6 +73,13 @@ include_once ('../components/UpdateModal.php');
     ?>
 
     <script type="module" src="../assets/js/home.js"></script>
+    <script>
+      new kursor({
+        type: 4,
+        removeDefaultCursor: true,
+        color: '#000',
+      })
+    </script>
   </body>
 
 </html>

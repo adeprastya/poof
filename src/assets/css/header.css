@@ -1,0 +1,117 @@
+header {
+	.vertical {
+		box-sizing: border-box;
+		z-index: 10;
+		position: fixed;
+		display: flex;
+		flex-direction: column;
+		gap: 5vh;
+
+		height: 100vh;
+		width: clamp(200px, 18vw, 250px);
+		padding: 20px 15px;
+		background: linear-gradient(45deg, var(--color-main-2), var(--color-main-1));
+		color: var(--color-light-1);
+
+		transition: all 0.5s ease-in-out;
+
+		div {
+			h1 {
+				font: bold 24px var(--font-1);
+			}
+
+			#nav-toggle {
+				position: absolute;
+				right: calc(0.8vw + 4px);
+				top: calc(0.8vw + 4px);
+
+				padding: 5px;
+				border-radius: 4px;
+
+				background-color: var(--color-light-03);
+				fill: var(--color-light-1);
+				cursor: pointer;
+
+				transition: all 0.5s ease;
+
+				&:hover {
+					background-color: var(--color-light-06);
+				}
+			}
+		}
+
+		nav {
+			display: flex;
+			flex-direction: column;
+			gap: 2.5vh;
+
+			a {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 5px 10px;
+				border-radius: 5px;
+
+				font: 18px var(--font-1);
+				letter-spacing: 0.5px;
+				text-decoration: none;
+				color: var(--color-light-1);
+
+				transition: all 0.5s ease;
+
+				&.nav-active {
+					background-color: var(--color-light-03);
+				}
+
+				&:hover {
+					background-color: var(--color-light-06);
+				}
+			}
+		}
+
+		> a {
+			display: block;
+			margin: auto auto 0;
+			padding: 5px 15px;
+			border: 2px solid rgb(255, 97, 97);
+			border-radius: 5px;
+			background-color: rgba(255, 97, 97, 0.367);
+
+			font: 16px var(--font-1);
+			letter-spacing: 1px;
+			text-decoration: none;
+			color: var(--color-light-1);
+
+			transition: all 0.5s ease;
+
+			&:hover {
+				background-color: rgba(255, 97, 97, 0.788);
+			}
+		}
+	}
+
+	.horizontal {
+		box-sizing: border-box;
+		z-index: 9;
+		position: fixed;
+		right: 0;
+
+		display: flex;
+		justify-content: center;
+
+		width: calc(100vw - clamp(200px, 18vw, 250px));
+		padding: 16px 30px;
+		background: linear-gradient(90deg, var(--color-main-1), var(--color-main-2));
+		background-size: 110%;
+		box-shadow: 0 0 8px var(--color-dark-03);
+		color: var(--color-light-1);
+
+		transform: translateY(-2px);
+		transition: all 0.5s ease-in-out;
+
+		h1 {
+			font: bold 20px var(--font-1);
+			letter-spacing: 0.7px;
+		}
+	}
+}
