@@ -32,7 +32,7 @@ function Headers($active = 'home')
         
         logoutLink.addEventListener("click", function(event) {
           event.preventDefault(); 
-          const userConfirmed = confirm("Apakah anda yakin ingin logout?");
+          const userConfirmed = confirm("Apakah Anda Yakin Ingin Logout?");
           
           if (userConfirmed) {
             window.location.href = logoutLink.href;
