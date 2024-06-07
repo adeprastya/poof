@@ -24,5 +24,22 @@ function Headers($active = 'home')
       <div class="horizontal"> 
         <h1>Welcome, ' . $data['name'] . '</h1>
       </div>
-    </header>';
+    </header>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const logoutLink = document.querySelector(".logout");
+        
+        logoutLink.addEventListener("click", function(event) {
+          event.preventDefault(); // Mencegah tautan dijalankan langsung
+          const userConfirmed = confirm("Apakah anda yakin ingin logout?");
+          
+          if (userConfirmed) {
+            window.location.href = logoutLink.href; // Mengarahkan ke tautan logout jika dikonfirmasi
+          }
+        });
+      });
+    </script>
+  ';
 }
+?>
