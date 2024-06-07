@@ -31,11 +31,11 @@ function Headers($active = 'home')
         const logoutLink = document.querySelector(".logout");
         
         logoutLink.addEventListener("click", function(event) {
-          event.preventDefault(); // Mencegah tautan dijalankan langsung
+          event.preventDefault(); 
           const userConfirmed = confirm("Apakah anda yakin ingin logout?");
           
           if (userConfirmed) {
-            window.location.href = logoutLink.href; // Mengarahkan ke tautan logout jika dikonfirmasi
+            window.location.href = logoutLink.href;
           }
         });
       });
