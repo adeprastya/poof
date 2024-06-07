@@ -17,7 +17,8 @@ function restyle() {
 		horizontal.style.width = "calc(100vw - clamp(200px, 18vw, 250px)";
 		horizontal.style.filter = "blur(2px) brightness(80%)";
 
-		main.style.filter = "blur(4px)";
+		main.style.width = "calc(100vw - clamp(200px, 18vw, 250px)";
+		main.style.filter = "blur(4px) brightness(80%)";
 	} else if (AppState.isMobile && !AppState.navOpen) {
 		navToggle.style.transform = "rotate(0deg)";
 
@@ -26,6 +27,7 @@ function restyle() {
 		horizontal.style.width = "calc(100vw - clamp(200px, 18vw, 250px) + calc(clamp(200px, 18vw, 250px) / 100 * 75)";
 		horizontal.style.filter = "none";
 
+		main.style.width = "calc(100vw - clamp(200px, 18vw, 250px) + calc(clamp(200px, 18vw, 250px) / 100 * 75)";
 		main.style.filter = "none";
 	} else if (!AppState.isMobile && AppState.navOpen) {
 		navToggle.style.transform = "rotate(540deg)";
@@ -35,6 +37,7 @@ function restyle() {
 		horizontal.style.width = "calc(100vw - clamp(200px, 18vw, 250px)";
 		horizontal.style.filter = "none";
 
+		main.style.width = "calc(100vw - clamp(200px, 18vw, 250px)";
 		main.style.filter = "none";
 	} else if (!AppState.isMobile && !AppState.navOpen) {
 		navToggle.style.transform = "rotate(0deg)";
@@ -44,6 +47,7 @@ function restyle() {
 		horizontal.style.width = "calc(100vw - clamp(200px, 18vw, 250px) + calc(clamp(200px, 18vw, 250px) / 100 * 75)";
 		horizontal.style.filter = "none";
 
+		main.style.width = "calc(100vw - clamp(200px, 18vw, 250px) + calc(clamp(200px, 18vw, 250px) / 100 * 75)";
 		main.style.filter = "none";
 	}
 }
@@ -60,4 +64,13 @@ navToggle.addEventListener("click", () => {
 	AppState.navOpen = !AppState.navOpen;
 
 	restyle();
+});
+
+const noteMenuToggles = document.querySelectorAll(".note-menu-toggle");
+const noteMenus = document.querySelectorAll(".note-menu");
+
+noteMenuToggles.forEach((noteMenuToggle, i) => {
+	noteMenuToggle.addEventListener("click", () => {
+		noteMenus[i].classList.toggle("opened");
+	});
 });

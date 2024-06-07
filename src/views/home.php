@@ -12,6 +12,7 @@ include_once ('../components/Header.php');
 include_once ('../components/Note.php');
 include_once ('../components/AddCollabModal.php');
 include_once ('../components/UpdateModal.php');
+include_once ('../components/PopUp.php');
 
 ?>
 
@@ -32,10 +33,8 @@ include_once ('../components/UpdateModal.php');
     <?= Headers("home") ?>
 
     <main>
-      <h2>Welcome, <?= User::getAll($_SESSION['user_id'])['name'] ?></h2>
-
       <div class="container">
-        <form action="../controllers/NoteController.php" method="POST">
+        <form class="new-note-form" action="../controllers/NoteController.php" method="POST">
           <div>
             <input type="text" name="title" id="title" placeholder="Title">
           </div>
@@ -65,11 +64,15 @@ include_once ('../components/UpdateModal.php');
     <?php
     if (isset($_GET['update_note']))
       echo UpdateModal($_GET['update_note']);
-    ?>
 
-    <?php
     if (isset($_GET['add_collab']))
       echo AddCollabModal($_GET['add_collab']);
+
+    if (isset($_GET['success']))
+      echo PopUp("success", $_GET['success']);
+
+    if (isset($_GET['error']))
+      echo PopUp("error", $_GET['error']);
     ?>
 
     <script type="module" src="../assets/js/home.js"></script>

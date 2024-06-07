@@ -3,8 +3,7 @@ include_once ('../models/Note.php');
 
 function UpdateModal($note_id)
 {
-    $note = Note::getNote($note_id);
-    echo print_r($note);
+    $note = Note::getData($note_id);
 
     return '
     <div class="modal update-modal">

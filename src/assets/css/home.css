@@ -1,5 +1,7 @@
 @import "./global.css";
 @import "./header.css";
+@import "./note.css";
+@import "./pop-up.css";
 
 body {
 	background-color: var(--color-light-2);
@@ -9,7 +11,10 @@ body {
 }
 
 main {
-	width: 100vw;
+	position: absolute;
+	top: 0;
+	right: 0;
+
 	min-height: 100vh;
 	background: var(--color-light-1);
 
@@ -18,309 +23,91 @@ main {
 	align-items: center;
 	gap: 30px;
 
-	transition: filter 0.5s linear;
+	transition: all 0.5s linear;
 
 	.container {
 		display: flex;
 		flex-direction: column;
 		gap: 30px;
-		margin-left: calc(15vw - 35px);
-		padding: 20px;
+
 		width: clamp(200px, 75vw, 700px);
+		margin: 90px auto 40px;
 		border-radius: 15px;
-
-		form {
-			border-radius: 8px;
-			border: 3px solid var(--color-dark-3);
-			display: flex;
-			flex-direction: column;
-			gap: 10px;
-			padding: 10px;
-
-			div {
-				input,
-				textarea {
-					width: 100%;
-					border: none;
-					overflow: visible;
-					background-color: transparent;
-					color: var(--color-dark-1);
-
-					&:focus {
-						outline: none;
-					}
-
-					&::placeholder {
-						letter-spacing: 0.5px;
-						color: #0000007c;
-					}
-				}
-
-				textarea {
-					font: 16px var(--font-1);
-					resize: none;
-				}
-			}
-
-			div:nth-child(1) {
-				border-bottom: 2px solid #0000003d;
-				& input {
-					height: 24px;
-					font: 20px var(--font-1);
-					&::placeholder {
-						font: 20px var(--font-1);
-					}
-				}
-			}
-
-			div:nth-child(2) {
-				& input {
-					min-height: 24px;
-					font: 18px var(--font-1);
-					&::placeholder {
-						font: 18px var(--font-1);
-					}
-				}
-			}
-
-			button {
-				padding: 6px;
-				border: none;
-				border-radius: 4px;
-				background: linear-gradient(110deg, var(--color-main-1), var(--color-main-2), var(--color-main-3));
-				background-size: 200%;
-
-				font: 16px var(--font-1);
-				letter-spacing: 0.5px;
-				color: var(--color-light-1);
-
-				cursor: pointer;
-				transition: all 0.5s ease;
-
-				&:hover {
-					background-position: right;
-				}
-			}
-		}
-
-		.note {
-			border-radius: 8px;
-			border: 3px solid var(--color-dark-3);
-			display: flex;
-			flex-direction: column;
-			gap: 10px;
-			padding: 10px;
-
-			.collaborators {
-				margin: 0;
-				font: 14px var(--font-1);
-				color: var(--color-dark-3);
-			}
-
-			h6 {
-				border-bottom: 2px solid #0000003d;
-				margin: 0 0 10px 0;
-
-				font: bold 20px var(--font-1);
-				letter-spacing: 0.5px;
-				color: var(--color-dark-1);
-			}
-
-			p {
-				font: 18px var(--font-1);
-				color: var(--color-dark-2);
-				margin: 0 0 50px 0;
-			}
-
-			.actions {
-				display: flex;
-				justify-content: space-between;
-
-				a {
-					padding: 4px 8px;
-					border-radius: 4px;
-
-					font: bold 14px var(--font-1);
-					text-decoration: none;
-					color: var(--color-dark-1);
-
-					transition: all 0.3s ease;
-
-					&.add-collab {
-						border: 2px solid var(--color-main-1);
-
-						&:hover {
-							background-color: var(--color-main-1);
-							color: var(--color-light-1);
-						}
-					}
-					&.update {
-						border: 2px solid var(--color-main-2);
-
-						&:hover {
-							background-color: var(--color-main-2);
-							color: var(--color-light-1);
-						}
-					}
-					&.delete {
-						border: 2px solid var(--color-main-3);
-
-						&:hover {
-							background-color: var(--color-main-3);
-							color: var(--color-light-1);
-						}
-					}
-				}
-			}
-		}
 	}
 }
 
-.modal {
-	width: clamp(300px, 70vw, 750px);
-	padding: 50px 30px;
-	border-radius: 10px;
-
-	z-index: 20;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-
+.new-note-form {
+	border-radius: 8px;
+	border: 2px solid var(--color-dark-03);
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	gap: 10px;
+	padding: 10px;
 
-	background-color: var(--color-light-1);
-	box-shadow: 0 0 10px #00000035;
+	animation: fade-in 0.8s ease-in-out;
 
-	a {
-		position: absolute;
-		top: 5px;
-		right: 10px;
-		text-decoration: none;
-		color: var(--color-dark-1);
+	div {
+		input,
+		textarea {
+			width: 100%;
+			border: none;
+			overflow: visible;
+			background-color: transparent;
+			color: var(--color-dark-1);
+
+			&:focus {
+				outline: none;
+			}
+
+			&::placeholder {
+				letter-spacing: 0.5px;
+				color: #0000007c;
+			}
+		}
+
+		textarea {
+			font: 16px var(--font-1);
+			resize: none;
+		}
 	}
 
-	h3 {
-		font: bold 24px var(--font-1);
-		letter-spacing: 0.5px;
-		margin: 0 0 30px 0;
+	div:nth-child(1) {
+		border-bottom: 1px solid var(--color-dark-06);
+		& input {
+			height: 24px;
+			font: 20px var(--font-1);
+			&::placeholder {
+				font: 20px var(--font-1);
+			}
+		}
+	}
+
+	div:nth-child(2) {
+		& input {
+			min-height: 24px;
+			font: 18px var(--font-1);
+			&::placeholder {
+				font: 18px var(--font-1);
+			}
+		}
 	}
 
 	button {
-		padding: 6px;
+		padding: 8px;
 		border: none;
 		border-radius: 4px;
-		background: linear-gradient(110deg, var(--color-main-1), var(--color-main-2), var(--color-main-3));
+		background: linear-gradient(110deg, var(--color-main-1), var(--color-main-2));
 		background-size: 200%;
-		font: 16px var(--font-1);
+
+		font: 14px var(--font-1);
 		letter-spacing: 0.5px;
 		color: var(--color-light-1);
+
 		cursor: pointer;
 		transition: all 0.5s ease;
 
 		&:hover {
 			background-position: right;
-		}
-	}
-
-	&.collab-modal {
-		form {
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			gap: 20px;
-
-			input {
-				padding: 0 10px;
-				font: 16px var(--font-1);
-				min-height: 24px;
-				border: 2px solid var(--color-main-3);
-				border-radius: 4px;
-
-				&::placeholder {
-					font: 16px var(--font-1);
-				}
-			}
-		}
-	}
-
-	&.update-modal {
-		form {
-			width: 100%;
-			border-radius: 8px;
-			border: 3px solid var(--color-dark-3);
-			display: flex;
-			flex-direction: column;
-			gap: 10px;
-			padding: 10px;
-
-			div {
-				input,
-				textarea {
-					width: 100%;
-					border: none;
-					overflow: visible;
-					background-color: transparent;
-					color: var(--color-dark-1);
-
-					&:focus {
-						outline: none;
-					}
-
-					&::placeholder {
-						letter-spacing: 0.5px;
-						color: #0000007c;
-					}
-				}
-
-				textarea {
-					font: 16px var(--font-1);
-					resize: none;
-				}
-			}
-
-			div:nth-child(1) {
-				border-bottom: 2px solid #0000003d;
-				& input {
-					height: 24px;
-					font: 20px var(--font-1);
-					&::placeholder {
-						font: 20px var(--font-1);
-					}
-				}
-			}
-
-			div:nth-child(2) {
-				& input {
-					min-height: 24px;
-					font: 18px var(--font-1);
-					&::placeholder {
-						font: 18px var(--font-1);
-					}
-				}
-			}
-
-			button {
-				padding: 6px;
-				border: none;
-				border-radius: 4px;
-				background: linear-gradient(110deg, var(--color-main-1), var(--color-main-2), var(--color-main-3));
-				background-size: 200%;
-
-				font: 16px var(--font-1);
-				letter-spacing: 0.5px;
-				color: var(--color-light-1);
-
-				cursor: pointer;
-				transition: all 0.5s ease;
-
-				&:hover {
-					background-position: right;
-				}
-			}
 		}
 	}
 }

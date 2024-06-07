@@ -8,6 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 
 include_once ('../components/Header.php');
 include_once ('../components/Trash.php');
+include_once ('../components/PopUp.php');
 include_once ('../models/User.php');
 include_once ('../models/Trash.php');
 
@@ -41,6 +42,14 @@ include_once ('../models/Trash.php');
         ?>
       </div>
     </main>
+
+    <?php
+    if (isset($_GET['success']))
+      echo PopUp("success", $_GET['success']);
+
+    if (isset($_GET['error']))
+      echo PopUp("error", $_GET['error']);
+    ?>
 
     <script type="module" src="../assets/js/home.js"></script>
   </body>

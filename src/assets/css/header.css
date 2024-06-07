@@ -3,6 +3,7 @@ header {
 		box-sizing: border-box;
 		z-index: 10;
 		position: fixed;
+
 		display: flex;
 		flex-direction: column;
 		gap: 5vh;
@@ -10,6 +11,8 @@ header {
 		height: 100vh;
 		width: clamp(200px, 18vw, 250px);
 		padding: 20px 15px;
+
+		box-shadow: 0 0 10px var(--color-dark-03);
 		background: linear-gradient(45deg, var(--color-main-2), var(--color-main-1));
 		color: var(--color-light-1);
 
@@ -43,7 +46,7 @@ header {
 		nav {
 			display: flex;
 			flex-direction: column;
-			gap: 2.5vh;
+			gap: 4vh;
 
 			a {
 				display: flex;
@@ -69,23 +72,27 @@ header {
 			}
 		}
 
-		> a {
-			display: block;
-			margin: auto auto 0;
-			padding: 5px 15px;
-			border: 2px solid rgb(255, 97, 97);
-			border-radius: 5px;
-			background-color: rgba(255, 97, 97, 0.367);
+		.logout {
+			box-sizing: border-box;
+			width: 100%;
+			margin: auto 0 0 0;
+			padding: 5px 10px;
 
-			font: 16px var(--font-1);
-			letter-spacing: 1px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-radius: 5px;
+
+			font: 14px var(--font-1);
+			letter-spacing: 0.5px;
 			text-decoration: none;
 			color: var(--color-light-1);
 
+			background-color: var(--color-danger-03);
 			transition: all 0.5s ease;
 
 			&:hover {
-				background-color: rgba(255, 97, 97, 0.788);
+				background-color: var(--color-danger-06);
 			}
 		}
 	}
@@ -112,6 +119,7 @@ header {
 		h1 {
 			font: bold 20px var(--font-1);
 			letter-spacing: 0.7px;
+			text-transform: capitalize;
 		}
 	}
 }
