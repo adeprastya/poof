@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2024 at 08:09 PM
+-- Generation Time: Jun 07, 2024 at 07:35 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,8 +43,21 @@ CREATE TABLE `note` (
 --
 
 INSERT INTO `note` (`id`, `type`, `created_at`, `is_favorite`, `title`, `content`, `user_id`, `collaborator_id`) VALUES
-(29, 'NOTE', '2024-06-06', 0, 'New', 'new', 16, NULL),
-(30, 'NOTE', '2024-06-06', 0, 'abc', 'abc\r\n', 16, ',17');
+(36, 'NOTE', '2024-06-07', 1, 'a', 'a', 16, ',17'),
+(38, 'NOTE', '2024-06-08', 0, 'q', 'q', 16, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reminder`
+--
+
+CREATE TABLE `reminder` (
+  `id` int(11) NOT NULL,
+  `note_id` int(11) NOT NULL,
+  `remind_at` datetime NOT NULL,
+  `is_sent` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -63,6 +76,15 @@ CREATE TABLE `trash` (
   `user_id` int(11) NOT NULL,
   `collaborator_id` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `trash`
+--
+
+INSERT INTO `trash` (`id`, `type`, `created_at`, `removed_at`, `is_favorite`, `title`, `content`, `user_id`, `collaborator_id`) VALUES
+(1, 'NOTE', '2024-06-07', '2024-06-07', 0, 'q', 'q', 16, NULL),
+(2, 'NOTE', '2024-06-07', '2024-06-07', 0, 'e', 'E', 16, NULL),
+(3, 'NOTE', '2024-06-07', '2024-06-08', 0, 'w', 'w\r\n', 16, NULL);
 
 -- --------------------------------------------------------
 
@@ -87,17 +109,6 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`) VALUES
 (17, 'Jane Doe', 'jane@mail.com', '$2y$10$3wBQrvFTevM.TlkoI/XJpuWc2lh/4usInq2uXakyFmfxRPLQR1vIG');
 
 --
--- Table structure for table 'reminder'
---
-
-CREATE TABLE `reminder` (
-  `id` int(11) NOT NULL,
-  `note_id` int(11) NOT NULL,
-  `remind_at` datetime NOT NULL,
-  `is_sent` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
 -- Indexes for dumped tables
 --
 
@@ -107,6 +118,13 @@ CREATE TABLE `reminder` (
 ALTER TABLE `note`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_id` (`user_id`);
+
+--
+-- Indexes for table `reminder`
+--
+ALTER TABLE `reminder`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_note_id` (`note_id`);
 
 --
 -- Indexes for table `trash`
@@ -120,13 +138,7 @@ ALTER TABLE `trash`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
-  --
-  -- Indexes for table 'reminder'
-  --
-ALTER TABLE `reminder`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_note_id` (`note_id`);
-
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -134,37 +146,26 @@ ALTER TABLE `reminder`
 -- AUTO_INCREMENT for table `note`
 --
 ALTER TABLE `note`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `reminder`
+--
+ALTER TABLE `reminder`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `trash`
+--
+ALTER TABLE `trash`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
---AUTO_INCREMENT reminder
---
-ALTER TABLE `reminder`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `note`
---
-ALTER TABLE `note`
-  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 COMMIT;
-
---
---Reminder
---
-ALTER TABLE `reminder`
-  ADD CONSTRAINT `fk_note_id` FOREIGN KEY (`note_id`) REFERENCES `note` (`id`);
-  COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

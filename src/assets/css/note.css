@@ -35,9 +35,18 @@
 		color: var(--color-dark-2);
 	}
 
-	.created-at {
-		font: 10px var(--font-1);
-		color: var(--color-dark-06);
+	.info {
+		display: flex;
+		gap: 10px;
+
+		.favorite {
+			color: var(--color-main-1);
+		}
+
+		.created-at {
+			font: 10px var(--font-1);
+			color: var(--color-dark-06);
+		}
 	}
 
 	.note-menu-toggle {

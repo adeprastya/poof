@@ -79,6 +79,21 @@ class NoteController
       }
     }
   }
+
+  public function set_favorite()
+  {
+    if (isset($_GET['set_favorite'])) {
+      $id = $_GET['set_favorite'];
+
+      $result = Note::setFavorite($id);
+
+      if ($result) {
+        header('Location: ../views/home.php?success=favorite_updated');
+      } else {
+        header('Location: ../views/home.php?error=failed_update_favorite');
+      }
+    }
+  }
 }
 
 $noteController = new NoteController();
@@ -86,3 +101,4 @@ $noteController->new_note();
 $noteController->update_note();
 $noteController->delete_note();
 $noteController->add_collab();
+$noteController->set_favorite();

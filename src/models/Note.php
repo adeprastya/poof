@@ -81,10 +81,20 @@ class Note
     mysqli_stmt_bind_param($stmt2, "si", $collab_id, $note_id);
     mysqli_stmt_execute($stmt2);
 
-    if (!$stmt2) {
-      return false;
-    }
-
     return mysqli_stmt_affected_rows($stmt2);
+  }
+
+  public static function setFavorite($id)
+  {
+    include ("../config/db.php");
+
+    $data = self::getData($id);
+    $favorite = ($data['is_favorite'] == 0) ? 1 : 0;
+
+    $stmt = mysqli_prepare($conn, "UPDATE note SET is_favorite = ? WHERE id = ?");
+    mysqli_stmt_bind_param($stmt, "ii", $favorite, $id);
+    mysqli_stmt_execute($stmt);
+
+    return mysqli_stmt_affected_rows($stmt);
   }
 }
