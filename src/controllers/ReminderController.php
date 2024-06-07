@@ -12,9 +12,9 @@ class ReminderController
       $reminder = Reminder::create($note_id, $remind_at);
 
       if ($reminder) {
-        header('Location: ../views/reminders.php?success=created');
+        header('Location: ../views/home.php?success=created');
       } else {
-        header('Location: ../views/reminders.php?error=failed');
+        header('Location: ../views/home.php?error=failed');
       }
     }
   }
@@ -29,9 +29,9 @@ class ReminderController
       $reminder = Reminder::update($id, $note_id, $remind_at);
 
       if ($reminder) {
-        header('Location: ../views/reminders.php?success=updated');
+        header('Location: ../views/home.php?success=updated');
       } else {
-        header('Location: ../views/reminders.php?error=failed');
+        header('Location: ../views/home.php?error=failed');
       }
     }
   }
@@ -43,9 +43,9 @@ class ReminderController
 
       $delete = Reminder::delete($id);
       if ($delete) {
-        header('Location: ../views/reminders.php?success=deleted');
+        header('Location: ../views/home.php?success=deleted');
       } else {
-        header('Location: ../views/reminders.php?error=failed');
+        header('Location: ../views/home.php?error=failed');
       }
     }
   }
