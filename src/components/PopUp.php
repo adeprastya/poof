@@ -6,7 +6,7 @@ function PopUp($type, $message)
     case 'success':
       return '
       <div class="pop-up success">
-        <p>Succes: ' . $message . '</p>
+        <p>Success: ' . $message . '</p>
       </div>
       ';
 
