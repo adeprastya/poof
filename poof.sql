@@ -125,8 +125,7 @@ ALTER TABLE `user`
   --
 ALTER TABLE `reminder`
   ADD PRIMARY KEY (`id`),
-  KEY `fk_note_id` (`note_id`),
-  CONSTRAINT `fk_note_id` FOREIGN KEY (`note_id`) REFERENCES `note` (`id`);
+  ADD KEY `fk_note_id` (`note_id`);
 
 -- AUTO_INCREMENT for dumped tables
 --
@@ -144,6 +143,12 @@ ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
+--AUTO_INCREMENT reminder
+--
+ALTER TABLE `reminder`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -153,6 +158,13 @@ ALTER TABLE `user`
 ALTER TABLE `note`
   ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 COMMIT;
+
+--
+--Reminder
+--
+ALTER TABLE `reminder`
+  ADD CONSTRAINT `fk_note_id` FOREIGN KEY (`note_id`) REFERENCES `note` (`id`);
+  COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
