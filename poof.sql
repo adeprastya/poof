@@ -87,6 +87,17 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`) VALUES
 (17, 'Jane Doe', 'jane@mail.com', '$2y$10$3wBQrvFTevM.TlkoI/XJpuWc2lh/4usInq2uXakyFmfxRPLQR1vIG');
 
 --
+-- Table structure for table 'reminder'
+--
+
+CREATE TABLE `reminder` (
+  `id` int(11) NOT NULL,
+  `note_id` int(11) NOT NULL,
+  `remind_at` datetime NOT NULL,
+  `is_sent` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
 -- Indexes for dumped tables
 --
 
@@ -109,7 +120,14 @@ ALTER TABLE `trash`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
---
+  --
+  -- Indexes for table 'reminder'
+  --
+ALTER TABLE `reminder`
+  ADD PRIMARY KEY (`id`),
+  KEY `fk_note_id` (`note_id`),
+  CONSTRAINT `fk_note_id` FOREIGN KEY (`note_id`) REFERENCES `note` (`id`);
+
 -- AUTO_INCREMENT for dumped tables
 --
 
