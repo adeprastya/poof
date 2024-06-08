@@ -66,8 +66,8 @@ include_once ('../components/ReminderModal.php');
 
 
     <?php
-    if (isset($_GET['reminder']));
-    echo ReminderModal($_GET['reminder']);
+    if (isset($_GET['reminder']))
+      echo ReminderModal($_GET['reminder']);
 
     if (isset($_GET['update_note']))
       echo UpdateModal($_GET['update_note']);

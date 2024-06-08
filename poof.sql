@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2024 at 07:35 PM
+-- Generation Time: Jun 08, 2024 at 02:00 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,22 +29,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `note` (
   `id` int(11) NOT NULL,
-  `type` varchar(10) NOT NULL DEFAULT 'NOTE',
+  `user_id` int(11) NOT NULL,
   `created_at` date NOT NULL DEFAULT current_timestamp(),
+  `type` varchar(10) NOT NULL DEFAULT 'NOTE',
   `is_favorite` tinyint(1) NOT NULL DEFAULT 0,
   `title` varchar(255) DEFAULT NULL,
   `content` varchar(1000) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
   `collaborator_id` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `note`
---
-
-INSERT INTO `note` (`id`, `type`, `created_at`, `is_favorite`, `title`, `content`, `user_id`, `collaborator_id`) VALUES
-(36, 'NOTE', '2024-06-07', 1, 'a', 'a', 16, ',17'),
-(38, 'NOTE', '2024-06-08', 0, 'q', 'q', 16, NULL);
 
 -- --------------------------------------------------------
 
@@ -67,24 +59,15 @@ CREATE TABLE `reminder` (
 
 CREATE TABLE `trash` (
   `id` int(11) NOT NULL,
-  `type` varchar(10) NOT NULL,
-  `created_at` date NOT NULL,
+  `user_id` int(11) NOT NULL,
   `removed_at` date NOT NULL DEFAULT current_timestamp(),
+  `created_at` date NOT NULL,
+  `type` varchar(10) NOT NULL,
   `is_favorite` tinyint(1) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
   `content` varchar(1000) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
   `collaborator_id` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `trash`
---
-
-INSERT INTO `trash` (`id`, `type`, `created_at`, `removed_at`, `is_favorite`, `title`, `content`, `user_id`, `collaborator_id`) VALUES
-(1, 'NOTE', '2024-06-07', '2024-06-07', 0, 'q', 'q', 16, NULL),
-(2, 'NOTE', '2024-06-07', '2024-06-07', 0, 'e', 'E', 16, NULL),
-(3, 'NOTE', '2024-06-07', '2024-06-08', 0, 'w', 'w\r\n', 16, NULL);
 
 -- --------------------------------------------------------
 
@@ -104,9 +87,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `password`) VALUES
-(15, 'User', 'user@mail.com', '$2y$10$Ynx3cnjWXyVWMQqxIDhwD.XwpTtoPQkhsDkb/JOsbrjA7X3K67hEO'),
-(16, 'Johh Doe', 'john@mail.com', '$2y$10$Z2UNnVV.5IJ.jIVTw.WNrexEboNJAKq1sv7QakYgrS7fgLPQHUQ8W'),
-(17, 'Jane Doe', 'jane@mail.com', '$2y$10$3wBQrvFTevM.TlkoI/XJpuWc2lh/4usInq2uXakyFmfxRPLQR1vIG');
+(1, 'Johh Doe', 'john@mail.com', '$2y$10$Z2UNnVV.5IJ.jIVTw.WNrexEboNJAKq1sv7QakYgrS7fgLPQHUQ8W'),
+(2, 'Jane Doe', 'jane@mail.com', '$2y$10$3wBQrvFTevM.TlkoI/XJpuWc2lh/4usInq2uXakyFmfxRPLQR1vIG');
 
 --
 -- Indexes for dumped tables
@@ -146,25 +128,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `note`
 --
 ALTER TABLE `note`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `reminder`
 --
 ALTER TABLE `reminder`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `trash`
 --
 ALTER TABLE `trash`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
