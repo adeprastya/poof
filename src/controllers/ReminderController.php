@@ -1,69 +1,44 @@
 <?php
-include_once ('../models/Note.php');
+require_once '../config/db.php'; 
+require_once '../models/Reminder.php';
 
-class ReminderController 
-{
-  public function new_reminder()
-  {
-    if (isset($_POST['new_reminder'])) {
-      $note_id = $_POST['note_id'];
-      $remind_at = $_POST['remind_at'];
+class ReminderController {
 
-      $reminder = Reminder::create($note_id, $remind_at);
-
-      if ($reminder) {
-        header('Location: ../views/home.php?success=created');
-      } else {
-        header('Location: ../views/home.php?error=failed');
-      }
+    public function __construct() {
+        // Ensure this constructor does any necessary setup
     }
-  }
 
-  public function update_reminder()
-  {
-    if (isset($_POST['update_reminder'])) {
-      $id = $_POST['update_reminder'];
-      $note_id = $_POST['note_id'];
-      $remind_at = $_POST['remind_at'];
-
-      $reminder = Reminder::update($id, $note_id, $remind_at);
-
-      if ($reminder) {
-        header('Location: ../views/home.php?success=updated');
-      } else {
-        header('Location: ../views/home.php?error=failed');
-      }
+    public function createReminder($note_id, $remind_at) {
+        $reminder = new Reminder($note_id, $remind_at);
+        $reminder->save();
     }
-  }
 
-  public function delete_reminder()
-  {
-    if (isset($_GET['delete_reminder'])) {
-      $id = $_GET['delete_reminder'];
-
-      $delete = Reminder::delete($id);
-      if ($delete) {
-        header('Location: ../views/home.php?success=deleted');
-      } else {
-        header('Location: ../views/home.php?error=failed');
-      }
+    public function send_reminders() {
+        $reminders = Reminder::getAllPendingReminders();
+        foreach ($reminders as $reminder) {
+            // Logic to send reminder (e.g., email or notification)
+            // If sent successfully, mark as sent
+            $reminder->markAsSent();
+        }
     }
-  }
-
-  public function send_reminders()
-  {
-    $reminders = Reminder::where('remind_at', '<=', now())->where('is_sent', 0)->get();
-    foreach ($reminders as $reminder) {
-      // Send reminder notification to user
-      // ...
-      $reminder->is_sent = 1;
-      $reminder->save();
-    }
-  }
 }
 
-$reminderController = new ReminderController();
-$reminderController->new_reminder();
-$reminderController->update_reminder();
-$reminderController->delete_reminder();
-$reminderController->send_reminders();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $note_id = $_POST['note_id'];
+    $reminder_date = $_POST['reminder_date'];
+    $reminder_time = $_POST['reminder_time'];
+
+    // Combine date and time into a single datetime string
+    $reminder_datetime = $reminder_date . ' ' . $reminder_time;
+
+    // Convert reminder_datetime to a DateTime object
+    $reminderDateTime = new DateTime($reminder_datetime);
+
+    $controller = new ReminderController();
+    $controller->createReminder($note_id, $reminderDateTime->format('Y-m-d H:i:s'));
+
+    echo "Reminder set successfully!";
+} else {
+    echo "Invalid request method.";
+}
+?>

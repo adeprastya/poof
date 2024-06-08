@@ -13,6 +13,7 @@ include_once ('../components/Note.php');
 include_once ('../components/AddCollabModal.php');
 include_once ('../components/UpdateModal.php');
 include_once ('../components/PopUp.php');
+include_once ('../components/ReminderModal.php');
 
 ?>
 
@@ -65,6 +66,9 @@ include_once ('../components/PopUp.php');
 
 
     <?php
+    if (isset($_GET['reminder']));
+    echo ReminderModal($_GET['reminder']);
+
     if (isset($_GET['update_note']))
       echo UpdateModal($_GET['update_note']);
 
