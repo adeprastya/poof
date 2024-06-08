@@ -12,7 +12,6 @@ class Reminder {
     }
 
     public function save() {
-        // Assuming you have a database connection set up as $db
         global $db;
 
         $query = "INSERT INTO reminder (note_id, remind_at, is_sent) VALUES (?, ?, ?)";
@@ -22,7 +21,6 @@ class Reminder {
     }
 
     public static function getAllPendingReminders() {
-        // Assuming you have a database connection set up as $db
         global $db;
 
         $query = "SELECT * FROM reminder WHERE is_sent = 0 AND remind_at <= NOW()";
@@ -37,7 +35,6 @@ class Reminder {
     }
 
     public function markAsSent() {
-        // Assuming you have a database connection set up as $db
         global $db;
 
         $query = "UPDATE reminder SET is_sent = 1 WHERE id = ?";
