@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2024 at 02:00 PM
+-- Generation Time: Jun 09, 2024 at 05:54 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -38,6 +38,14 @@ CREATE TABLE `note` (
   `collaborator_id` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `note`
+--
+
+INSERT INTO `note` (`id`, `user_id`, `created_at`, `type`, `is_favorite`, `title`, `content`, `collaborator_id`) VALUES
+(1, 1, '2024-06-08', 'NOTE', 0, 'John project', '1. Web', NULL),
+(3, 1, '2024-06-08', 'NOTE', 1, 'Team Project', '1. Design', ',2');
+
 -- --------------------------------------------------------
 
 --
@@ -46,10 +54,20 @@ CREATE TABLE `note` (
 
 CREATE TABLE `reminder` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `note_id` int(11) NOT NULL,
-  `remind_at` datetime NOT NULL,
-  `is_sent` tinyint(1) NOT NULL DEFAULT 0
+  `remind_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reminder`
+--
+
+INSERT INTO `reminder` (`id`, `user_id`, `note_id`, `remind_at`) VALUES
+(11, 1, 1, '2024-06-09 22:20:00'),
+(12, 1, 1, '2024-06-09 22:25:00'),
+(13, 1, 1, '2024-06-09 22:48:00'),
+(14, 1, 1, '2024-06-09 22:50:00');
 
 -- --------------------------------------------------------
 
@@ -128,19 +146,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `note`
 --
 ALTER TABLE `note`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `reminder`
 --
 ALTER TABLE `reminder`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `trash`
 --
 ALTER TABLE `trash`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
