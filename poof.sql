@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2024 at 05:54 PM
+-- Generation Time: Jun 09, 2024 at 06:01 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -123,8 +123,7 @@ ALTER TABLE `note`
 -- Indexes for table `reminder`
 --
 ALTER TABLE `reminder`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_note_id` (`note_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `trash`
