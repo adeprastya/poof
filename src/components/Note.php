@@ -44,11 +44,11 @@ function Note($note, $user_id)
           </div>
 
           <div class='note-menu'>
-            <a href='home.php?reminder=" . urlencode($note['id']) . "'>Set Reminder</a>
-
             <a href='home.php?update_note=" . urlencode($note['id']) . "'>Update</a>
 
             <a href='../controllers/NoteController.php?set_favorite=" . $note['id'] . "'>" . (($note['is_favorite'] == 0) ? "Make Favorite" : "Unfavorite") . "</a>
+
+            <a href='home.php?reminder=" . urlencode($note['id']) . "'>Set Reminder</a>
 
             <a href='home.php?add_collab=" . urlencode($note['id']) . "'>Add Collaborator</a>
 
@@ -76,8 +76,9 @@ function Note($note, $user_id)
           </div>
 
           <div class='note-menu'>
-            <a href='home.php?reminder=" . urlencode($note['id']) . "'>Set Reminder</a>
             <a class='update' href='home.php?update_note=" . urlencode($note['id']) . "'>Update</a>
+
+            <a href='home.php?reminder=" . urlencode($note['id']) . "'>Set Reminder</a>
           </div>
         </div>";
 
@@ -101,12 +102,11 @@ function Note($note, $user_id)
               </div>
 
               <div class='note-menu'>
-                 <a href='home.php?reminder=" . urlencode($note['id']) . "'>Set Reminder</a>
-
-
                 <a href='home.php?update_note=" . urlencode($note['id']) . "'>Update</a>
 
                 <a href='../controllers/NoteController.php?set_favorite=" . $note['id'] . "'>" . (($note['is_favorite'] == 0) ? "Make Favorite" : "Unfavorite") . "</a>
+
+                <a href='home.php?reminder=" . urlencode($note['id']) . "'>Set Reminder</a>
 
                 <a href='home.php?add_collab=" . urlencode($note['id']) . "'>Add Collaborator</a>
 

@@ -82,6 +82,7 @@ include_once ('../components/ReminderModal.php');
       echo PopUp("error", $_GET['error']);
     ?>
 
+    <script src="../utils/js/reminder.js"></script>
     <script type="module" src="../assets/js/home.js"></script>
     <script>
       new kursor({

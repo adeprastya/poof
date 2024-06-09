@@ -8,7 +8,9 @@ function AddCollabModal($noteId)
     <a href="home.php">x</a>
 
     <form action="../controllers/NoteController.php" method="POST"> 
-      <input type="email" name="collab_email" placeholder="Email">
+      <div>
+        <input type="email" name="collab_email" placeholder="Email">
+      </div>
 
       <button type="submit" name="add_collab" value="' . $noteId . '">Add</button>
     </form>

@@ -1,36 +1,30 @@
 <?php
-require_once '../config/db.php'; 
+require_once '../config/db.php';
 require_once '../models/Reminder.php';
 
-class ReminderController {
+class ReminderController
+{
+    public function create_reminder()
+    {
+        if (isset($_POST['set_reminder'])) {
+            session_start();
 
-    public function __construct() {
-    }
+            $user_id = $_SESSION['user_id'];
+            $note_id = $_POST['set_reminder'];
+            $remind_at = $_POST['remind_at'];
+            $reminderDateTime = new DateTime($remind_at);
+            $formattedDateTime = $reminderDateTime->format('Y-m-d H:i:s');
 
-    public function createReminder($note_id, $remind_at) {
-        $reminder = new Reminder($note_id, $remind_at);
-        $reminder->save();
-    }
+            $reminder = new Reminder($user_id, $note_id, $formattedDateTime);
 
-    public function send_reminders() {
-        $reminders = Reminder::getAllPendingReminders();
-        foreach ($reminders as $reminder) {
-            $reminder->markAsSent();
+            if ($reminder->create()) {
+                header('Location: ../views/home.php?success=reminder_added');
+            } else {
+                header('Location: ../views/home.php?error=failed');
+            }
         }
     }
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $note_id = $_POST['note_id'];
-    $remind_at = $_POST['remind_at'];
-
-    $reminderDateTime = new DateTime($remind_at);
-
-    $controller = new ReminderController();
-    $controller->createReminder($note_id, $reminderDateTime->format('Y-m-d H:i:s'));
-
-        header('Location: ../views/home.php?success=Reminder Set');
-      } else {
-        header('Location: ../views/home.php?error=failed');
-      }
-?>
+$reminderController = new ReminderController();
+$reminderController->create_reminder();
