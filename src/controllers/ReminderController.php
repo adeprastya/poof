@@ -22,18 +22,15 @@ class ReminderController {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $note_id = $_POST['note_id'];
-    $reminder_date = $_POST['reminder_date'];
-    $reminder_time = $_POST['reminder_time'];
+    $remind_at = $_POST['remind_at'];
 
-    $reminder_datetime = $reminder_date . ' ' . $reminder_time;
-
-    $reminderDateTime = new DateTime($reminder_datetime);
+    $reminderDateTime = new DateTime($remind_at);
 
     $controller = new ReminderController();
     $controller->createReminder($note_id, $reminderDateTime->format('Y-m-d H:i:s'));
 
-    echo "Reminder set successfully!";
-} else {
-    echo "Invalid request method.";
-}
+        header('Location: ../views/home.php?success=Reminder Set');
+      } else {
+        header('Location: ../views/home.php?error=failed');
+      }
 ?>
