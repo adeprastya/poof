@@ -30,6 +30,11 @@
           <input type="password" name="password" id="password" required>
         </div>
 
+        <div>
+          <label for="confirm password">Password</label>
+          <input type="password" name="confirm password" id="confirm password" required>
+        </div>
+
         <button type="submit" name="signup">SIGN UP</button>
       </form>
 
