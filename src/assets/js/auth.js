@@ -12,3 +12,17 @@ signupAnchor.addEventListener("click", () => {
 	loginCard.style.transform = "translateY(0)";
 	signupCard.style.transform = "translateY(200vh)";
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+	const signupForm = document.querySelector('#signup-card form');
+	const passwordInput = document.getElementById('password');
+	const confirmPasswordInput = document.getElementById('confirm-password');
+  
+	signupForm.addEventListener('submit', function (event) {
+	  if (passwordInput.value !== confirmPasswordInput.value) {
+		event.preventDefault(); // Prevent form submission
+		alert("Passwords do not match!");
+	  }
+	});
+  });
+  
