@@ -1,69 +1,30 @@
 <?php
-include_once ('../models/Note.php');
+require_once '../config/db.php';
+require_once '../models/Reminder.php';
 
-class ReminderController 
+class ReminderController
 {
-  public function new_reminder()
-  {
-    if (isset($_POST['new_reminder'])) {
-      $note_id = $_POST['note_id'];
-      $remind_at = $_POST['remind_at'];
+    public function create_reminder()
+    {
+        if (isset($_POST['set_reminder'])) {
+            session_start();
 
-      $reminder = Reminder::create($note_id, $remind_at);
+            $user_id = $_SESSION['user_id'];
+            $note_id = $_POST['set_reminder'];
+            $remind_at = $_POST['remind_at'];
+            $reminderDateTime = new DateTime($remind_at);
+            $formattedDateTime = $reminderDateTime->format('Y-m-d H:i:s');
 
-      if ($reminder) {
-        header('Location: ../views/home.php?success=created');
-      } else {
-        header('Location: ../views/home.php?error=failed');
-      }
+            $reminder = new Reminder($user_id, $note_id, $formattedDateTime);
+
+            if ($reminder->create()) {
+                header('Location: ../views/home.php?success=reminder_added');
+            } else {
+                header('Location: ../views/home.php?error=failed');
+            }
+        }
     }
-  }
-
-  public function update_reminder()
-  {
-    if (isset($_POST['update_reminder'])) {
-      $id = $_POST['update_reminder'];
-      $note_id = $_POST['note_id'];
-      $remind_at = $_POST['remind_at'];
-
-      $reminder = Reminder::update($id, $note_id, $remind_at);
-
-      if ($reminder) {
-        header('Location: ../views/home.php?success=updated');
-      } else {
-        header('Location: ../views/home.php?error=failed');
-      }
-    }
-  }
-
-  public function delete_reminder()
-  {
-    if (isset($_GET['delete_reminder'])) {
-      $id = $_GET['delete_reminder'];
-
-      $delete = Reminder::delete($id);
-      if ($delete) {
-        header('Location: ../views/home.php?success=deleted');
-      } else {
-        header('Location: ../views/home.php?error=failed');
-      }
-    }
-  }
-
-  public function send_reminders()
-  {
-    $reminders = Reminder::where('remind_at', '<=', now())->where('is_sent', 0)->get();
-    foreach ($reminders as $reminder) {
-      // Send reminder notification to user
-      // ...
-      $reminder->is_sent = 1;
-      $reminder->save();
-    }
-  }
 }
 
 $reminderController = new ReminderController();
-$reminderController->new_reminder();
-$reminderController->update_reminder();
-$reminderController->delete_reminder();
-$reminderController->send_reminders();
+$reminderController->create_reminder();

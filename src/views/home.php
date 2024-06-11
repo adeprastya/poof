@@ -13,6 +13,7 @@ include_once ('../components/Note.php');
 include_once ('../components/AddCollabModal.php');
 include_once ('../components/UpdateModal.php');
 include_once ('../components/PopUp.php');
+include_once ('../components/ReminderModal.php');
 
 ?>
 
@@ -65,6 +66,9 @@ include_once ('../components/PopUp.php');
 
 
     <?php
+    if (isset($_GET['reminder']))
+      echo ReminderModal($_GET['reminder']);
+
     if (isset($_GET['update_note']))
       echo UpdateModal($_GET['update_note']);
 
@@ -78,6 +82,7 @@ include_once ('../components/PopUp.php');
       echo PopUp("error", $_GET['error']);
     ?>
 
+    <script src="../utils/js/reminder.js"></script>
     <script type="module" src="../assets/js/home.js"></script>
     <script>
       new kursor({
