@@ -21,6 +21,8 @@ header {
 		div {
 			h1 {
 				font: bold 24px var(--font-1);
+				margin-bottom: 20px;
+				text-shadow: 2px 2px 4px var(--color-dark-05);
 			}
 
 			#nav-toggle {
@@ -52,7 +54,7 @@ header {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				padding: 5px 10px;
+				padding: 10px;
 				border-radius: 5px;
 
 				font: 18px var(--font-1);

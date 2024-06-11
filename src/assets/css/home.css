@@ -28,6 +28,7 @@ main {
 
 	transition: all 0.5s linear;
 
+	padding: 20px;
 	
 	.container {
 		display: flex;
@@ -46,9 +47,9 @@ main {
 	flex-direction: column;
 	gap: 10px;
 	padding: 20px;
-    background: var(--color-light-1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    animation: fade-in 0.8s ease-in-out;
+  background: var(--color-light-1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: fade-in 0.8s ease-in-out;
 
 	div {
 		input,
@@ -81,6 +82,7 @@ main {
 		& input {
 			height: 24px;
 			font: 20px var(--font-1);
+
 			&::placeholder {
 				font: 20px var(--font-1);
 			}
@@ -91,6 +93,7 @@ main {
 		& input {
 			min-height: 24px;
 			font: 18px var(--font-1);
+			
 			&::placeholder {
 				font: 18px var(--font-1);
 			}

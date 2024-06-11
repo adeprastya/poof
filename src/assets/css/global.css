@@ -183,7 +183,7 @@ table {
 
 	--color-success-1: #3dff6a;
 
-	--font-1: "Plus Jakarta Sans", Arial;
+	--font-1: "Plus Jakarta Sans", sans-serif;
 }
 
 *::-webkit-scrollbar {
@@ -229,7 +229,7 @@ table {
 		right: 10px;
 		text-decoration: none;
 		color: var(--color-dark-1);
-
+		transition: color 0.3s ease;
 		cursor: pointer;
 	}
 
@@ -253,6 +253,8 @@ table {
 
 		&:hover {
 			background-position: right;
+			box-shadow: 0 4px 8px var(--color-dark-03);
+			transform: translateY(-2px);
 		}
 	}
 
