@@ -25,6 +25,9 @@ include_once ('../models/Trash.php');
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/home.css?v=<?= time() ?>">
+
+    <script src="https://cdn.jsdelivr.net/npm/kursor@0.0.14/dist/kursor.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
   </head>
 
   <body>
@@ -54,7 +57,15 @@ include_once ('../models/Trash.php');
       echo PopUp("error", $_GET['error']);
     ?>
 
+    <script src="../utils/js/reminder.js"></script>
     <script type="module" src="../assets/js/home.js"></script>
+    <script>
+      new kursor({
+        type: 4,
+        removeDefaultCursor: true,
+        color: '#000',
+      })
+    </script>
   </body>
 
 </html>
