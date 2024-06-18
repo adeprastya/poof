@@ -4,7 +4,7 @@
 	z-index: 20;
 	position: fixed;
 	bottom: 10px;
-	right: 10px;
+	right: 0;
 	max-width: 300px;
 
 	display: flex;
@@ -15,8 +15,7 @@
 	padding: 10px 20px;
 	border-radius: 8px 0 0 8px;
 
-	transform: translateY(100%);
-	animation: pop-up 0.3s ease;
+	animation: pop-up 3s ease both;
 
 	p {
 		font: 14px var(--font-1);
@@ -31,19 +30,5 @@
 
 	&.error {
 		background-color: var(--color-danger-1);
-	}
-
-	.pop-up.active {
-		transform: translateY(0); 
-		animation: pop-up-slide-in 0.3s ease forwards; 
-	}
-
-	@keyframes pop-up-slide-in {
-		from {
-				transform: translateY(100%);
-		}
-		to {
-				transform: translateY(0);
-		}
 	}
 }

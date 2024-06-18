@@ -128,11 +128,11 @@ table {
 	border-spacing: 0;
 }
 
-@keyframes fade-in {
-	from {
+@keyframes fade {
+	0% {
 		opacity: 0;
 	}
-	to {
+	100% {
 		opacity: 1;
 	}
 }
@@ -140,7 +140,7 @@ table {
 @keyframes fade-in-from-bottom {
 	from {
 		opacity: 0;
-		transform: translateY(50px);
+		transform: translateY(-50px);
 	}
 	to {
 		opacity: 1;
@@ -221,7 +221,7 @@ table {
 	background-color: var(--color-light-1);
 	box-shadow: 0 0 10px #00000035;
 
-	animation: fade-in 0.6s ease-in-out both;
+	animation: fade 0.6s ease-in-out;
 
 	a {
 		position: absolute;
