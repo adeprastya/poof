@@ -1,0 +1,32 @@
+.pop-up {
+	z-index: 20;
+	position: fixed;
+	bottom: 10px;
+	right: 0;
+	max-width: 300px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	box-sizing: border-box;
+	padding: 10px 20px;
+	border-radius: 8px 0 0 8px;
+
+	animation: pop-up 3s ease both;
+
+	p {
+		font: 14px var(--font-1);
+		color: var(--color-dark-1);
+		text-transform: capitalize;
+		margin: 0;
+	}
+
+	&.success {
+		background-color: var(--color-success-1);
+	}
+
+	&.error {
+		background-color: var(--color-danger-1);
+	}
+}

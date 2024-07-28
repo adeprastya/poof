@@ -1,0 +1,119 @@
+@import "./index.css";
+
+body {
+	background-color: var(--color-light-2);
+	font-family: var(--font-1);
+
+	overflow-x: hidden;
+
+	margin: 0;
+	padding: 0;
+}
+
+main {
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	min-height: 100vh;
+	background: var(--color-light-1);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+
+	transition: all 0.5s linear;
+
+	padding: 20px;
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+
+		width: clamp(200px, 75vw, 700px);
+		margin: 90px auto 40px;
+	}
+}
+
+.new-note-form {
+	border-radius: 16px;
+	border: 2px solid var(--color-dark-03);
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 20px;
+	background: var(--color-light-1);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	animation: fade-in 0.8s ease-in-out;
+
+	div {
+		input,
+		textarea {
+			width: 100%;
+			border: none;
+			overflow: visible;
+			background-color: transparent;
+			color: var(--color-dark-1);
+
+			&:focus {
+				outline: none;
+			}
+
+			&::placeholder {
+				letter-spacing: 0.5px;
+				color: #0000007c;
+			}
+		}
+
+		textarea {
+			font: 16px var(--font-1);
+			resize: none;
+		}
+	}
+
+	div:nth-child(1) {
+		border-bottom: 1px solid var(--color-dark-06);
+		& input {
+			height: 24px;
+			font: 20px var(--font-1);
+
+			&::placeholder {
+				font: 20px var(--font-1);
+			}
+		}
+	}
+
+	div:nth-child(2) {
+		& input {
+			min-height: 24px;
+			font: 18px var(--font-1);
+
+			&::placeholder {
+				font: 18px var(--font-1);
+			}
+		}
+	}
+
+	button {
+		padding: 10px;
+		border: none;
+		border-radius: 8px;
+		background: linear-gradient(110deg, var(--color-main-1), var(--color-main-2));
+		background-size: 200%;
+
+		font: 16px var(--font-1);
+		letter-spacing: 0.5px;
+		color: var(--color-light-1);
+
+		cursor: pointer;
+		transition: all 0.5s ease;
+
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+		&:hover {
+			background-position: right;
+		}
+	}
+}
