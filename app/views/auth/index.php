@@ -11,6 +11,8 @@
   </head>
 
   <body>
+    <?= Flasher::flash() ?>
+
     <h2 class="hero">Poof</h2>
 
     <div class="card" id="login-card">

@@ -12,10 +12,10 @@ class Auth extends Controller
     $result = $this->model("User_model")->authenticate($_POST);
 
     if ($result) {
-      // Succes
       header("Location: " . BASE_URL . "/note");
     } else {
-      // Error
+      Flasher::setFlash("error", "Wrong email or password");
+
       header("Location: " . BASE_URL . "/auth");
     }
   }
@@ -25,9 +25,9 @@ class Auth extends Controller
     $result = $this->model("User_model")->create($_POST);
 
     if ($result) {
-      // Succes
+      Flasher::setFlash("success", "Account created successfully");
     } else {
-      // Error
+      Flasher::setFlash("error", "Failed to create account");
     }
 
     header("Location: " . BASE_URL . "/auth");

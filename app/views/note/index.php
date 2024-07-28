@@ -18,6 +18,8 @@ if (!isset($_SESSION['user_id'])) {
   </head>
 
   <body>
+    <?= Flasher::flash() ?>
+
     <?= navigation("home", $data['user']['name']) ?>
 
     <main>

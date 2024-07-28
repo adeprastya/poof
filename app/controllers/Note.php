@@ -15,9 +15,9 @@ class Note extends Controller
     $result = $this->model("Note_model")->create($_POST);
 
     if ($result) {
-      // Succes
+      Flasher::setFlash("success", "Note created");
     } else {
-      // Error
+      Flasher::setFlash("error", "Failed to create note");
     }
 
     header("Location: " . BASE_URL . "/note");
@@ -28,9 +28,9 @@ class Note extends Controller
     $result = $this->model("Note_model")->delete($id);
 
     if ($result) {
-      // Succes
+      Flasher::setFlash("success", "Note deleted");
     } else {
-      // Error
+      Flasher::setFlash("error", "Failed to delete note");
     }
 
     header("Location: " . BASE_URL . "/note");
