@@ -1,0 +1,30 @@
+@import "./global.css";
+@import "./keyframes.css";
+
+.flash {
+	z-index: 100;
+	position: fixed;
+	bottom: 2.5vh;
+	right: 0;
+
+	padding: 0.8em 1.2rem;
+	border-top-left-radius: 0.5rem;
+	border-bottom-left-radius: 0.5rem;
+	background-image: linear-gradient(to bottom right, var(--color-main-1), var(--color-main-2));
+
+	animation: flasher 6s ease-in-out both;
+
+	&.success {
+		border-bottom: 4px solid var(--color-success-1);
+	}
+	&.error {
+		border-bottom: 4px solid var(--color-danger-1);
+	}
+
+	p {
+		font-family: var(--font-1);
+		font-size: 1rem;
+		color: var(--color-light-1);
+		letter-spacing: 1px;
+	}
+}

@@ -1,27 +1,14 @@
 const loginCard = document.getElementById("login-card");
-const signupCard = document.getElementById("signup-card");
 const loginAnchor = document.getElementById("login-anchor");
-const signupAnchor = document.getElementById("signup-anchor");
+const logupCard = document.getElementById("logup-card");
+const logupAnchor = document.getElementById("logup-anchor");
 
 loginAnchor.addEventListener("click", () => {
 	loginCard.style.transform = "translateY(-200vh)";
-	signupCard.style.transform = "translateY(0)";
+	logupCard.style.transform = "translateY(0)";
 });
 
-signupAnchor.addEventListener("click", () => {
+logupAnchor.addEventListener("click", () => {
 	loginCard.style.transform = "translateY(0)";
-	signupCard.style.transform = "translateY(200vh)";
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-	const signupForm = document.querySelector("#signup-card form");
-	const passwordInput = document.getElementById("password");
-	const confirmPasswordInput = document.getElementById("confirm-password");
-
-	signupForm.addEventListener("submit", function (event) {
-		if (passwordInput.value !== confirmPasswordInput.value) {
-			event.preventDefault();
-			alert("Passwords do not match!");
-		}
-	});
+	logupCard.style.transform = "translateY(200vh)";
 });

@@ -16,6 +16,7 @@ function note($note)
   $html = "
     <div class='note' data-id='" . $note['id'] . "'>
       <h6 class='title'>" . $note['title'] . "</h6>
+      
       <p class='content'>" . $note['content'] . "</p>
 
       <div class='info'>" .

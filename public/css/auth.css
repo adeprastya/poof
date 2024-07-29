@@ -1,75 +1,60 @@
 @import "./index.css";
 
 body {
+	overflow: hidden;
+	width: 100vw;
+	height: 100vh;
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100vw;
-	min-height: 100vh;
-	overflow: hidden;
 
-	background: linear-gradient(130deg, var(--color-main-1), var(--color-main-2));
-}
-
-.hero {
-	display: block;
-	position: fixed;
-	top: 5px;
-	left: 5px;
-	background-color: #00000030;
-	padding: 5px 8px;
-	border-radius: 5px;
-
-	font: lighter 12px var(--font-1);
-	letter-spacing: 0.5px;
-	color: var(--color-light-1);
-	text-transform: uppercase;
-}
-
-#signup-card {
-	transform: translateY(100vh);
-	animation: none;
+	background: linear-gradient(to bottom right, var(--color-main-1), var(--color-main-2));
 }
 
 .card {
 	position: fixed;
-	box-sizing: border-box;
-	padding: 30px 40px;
-	border-radius: 25px;
-
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 30px;
+	padding: 2rem 3rem;
+	border-radius: 2rem;
 
 	color: var(--color-light-1);
 	backdrop-filter: blur(10px) brightness(85%);
 	box-shadow: 0 0 20px var(--color-dark-03);
 
-	transition: all 1s ease;
+	transition: all 1s ease-in-out;
 	animation: fade-in-from-bottom 0.6s ease-in-out;
 
-	h1 {
-		font: 32px var(--font-1);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 3rem;
+
+	h2 {
+		font: 2.5rem var(--font-1);
 		letter-spacing: 1px;
 	}
 
 	form {
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		gap: 1.5rem;
 
 		div {
 			display: flex;
 			flex-direction: column;
-			gap: 5px;
+			gap: 0.5rem;
 
 			label {
 				display: flex;
-				gap: 10px;
+				gap: 0.5rem;
+
+				svg {
+					overflow: visible;
+					fill: var(--color-light-1);
+				}
 
 				p {
-					font: lighter 14px var(--font-1);
+					font: lighter 1rem var(--font-1);
 				}
 			}
 
@@ -91,14 +76,16 @@ body {
 		}
 
 		button {
+			margin-top: 1rem;
+			padding: 0.5rem;
 			border: none;
-			padding: 8px;
-			border-radius: 5px;
-			background: linear-gradient(110deg, var(--color-main-1), var(--color-main-2));
+
+			border-radius: 0.25rem;
+			background: linear-gradient(to right, var(--color-main-1), var(--color-main-2));
 			background-size: 150%;
 			box-shadow: 0 0 8px var(--color-light-03);
 
-			font: lighter 16px var(--font-1);
+			font: lighter 1rem var(--font-1);
 			letter-spacing: 1px;
 			color: var(--color-light-1);
 
@@ -114,10 +101,11 @@ body {
 	}
 
 	p {
-		font: 16px var(--font-1);
+		font: 1rem var(--font-1);
 		color: var(--color-light-2);
-		cursor: pointer;
+
 		transition: color 0.3s ease;
+		cursor: pointer;
 
 		&:hover {
 			color: var(--color-light-1);
@@ -126,6 +114,7 @@ body {
 	}
 }
 
-#confirm-password {
-	margin-top: 10px;
+#logup-card {
+	transform: translateY(100vh);
+	animation: none;
 }

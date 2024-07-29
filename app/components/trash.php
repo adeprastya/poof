@@ -13,7 +13,9 @@ function trash($note)
 
           <p class='content'>" . $note['content'] . "</p>
           
-          <p class='created-at'>Removed at " . $note['removed_at'] . "</p>
+          <div class='info'>
+            <p class='created-at'>Removed at " . $note['removed_at'] . "</p>
+          </div>
           
           <div class='note-menu-toggle'>
             " . $svg['menu'] . "
