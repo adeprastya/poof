@@ -33,6 +33,7 @@ if (!isset($_SESSION['user_id'])) {
     </main>
 
     <script type="module" src="<?= BASE_URL ?>/js/nav.js"></script>
+    <script type="module" src="<?= BASE_URL ?>/js/trash.js"></script>
     <script type="module" src="<?= BASE_URL ?>/js/reminder.js"></script>
   </body>
 
