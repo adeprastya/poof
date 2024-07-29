@@ -1,18 +1,21 @@
 <?php
-function CollabModal($noteId)
+
+function collabModal()
 {
   return '
-  <div class="modal collab-modal">
+  <div id="collab-modal" class="modal collab-modal">
     <h3>Add Collaborator</h3>
-    
-    <a href="home.php">x</a>
 
-    <form action="../controllers/NoteController.php" method="POST"> 
+    <button class="close-collab-modal">x</button>
+
+    <form action="' . BASE_URL . '/note/collab" method="POST">
       <div>
         <input type="email" name="collab_email" placeholder="Email">
       </div>
 
-      <button type="submit" name="add_collab" value="' . $noteId . '">Add</button>
+      <input type="hidden" name="id" value="">
+
+      <button type="submit">Add</button>
     </form>
   </div>
   ';

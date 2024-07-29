@@ -25,10 +25,12 @@ class Note extends Controller
 
   public function delete($id)
   {
+    $temp = $this->model("Note_model")->get($id);
+    $trash = $this->model("Trash_model")->create($temp);
     $result = $this->model("Note_model")->delete($id);
 
-    if ($result) {
-      Flasher::setFlash("success", "Note deleted");
+    if ($result && $trash) {
+      Flasher::setFlash("success", "Note deleted and moved to trash");
     } else {
       Flasher::setFlash("error", "Failed to delete note");
     }
@@ -41,48 +43,63 @@ class Note extends Controller
     $result = $this->model("Note_model")->edit($_POST);
 
     if ($result) {
-      // Succes
+      Flasher::setFlash("success", "Note updated");
     } else {
-      // Error
+      Flasher::setFlash("error", "Failed to update note");
     }
 
     header("Location: " . BASE_URL . "/note");
   }
 
-  public function favorite($id)
+  public function reminder()
   {
-    $result = $this->model("Note_model")->setfavorite($id);
+    $_POST['user_id'] = $_SESSION['user_id'];
+    $result = $this->model("Reminder_model")->create($_POST);
 
-    if ($result) {
-      // Succes
-    } else {
-      // Error
+    if (!$result) {
+      Flasher::setFlash("error", "Failed to set reminder");
+
+      header("Location: " . BASE_URL . "/note");
+      exit;
     }
 
-    header("Location: " . BASE_URL . "/note");
-  }
-
-  public function reminder($id)
-  {
-    $result = $this->model("Reminder_model")->create($id);
-
-    if ($result) {
-      // Succes
-    } else {
-      // Error
-    }
-
+    Flasher::setFlash("success", "New reminder added");
     header("Location: " . BASE_URL . "/note");
   }
 
   public function collab()
   {
-    $result = $this->model("Note_model")->setcollab($_POST);
+    $collaborator = $this->model("User_model")->getByEmail($_POST['collab_email']);
+
+    if (!$collaborator) {
+      Flasher::setFlash("error", "Collaborator not found");
+
+      header("Location: " . BASE_URL . "/note");
+      exit;
+    }
+
+    $result = $this->model("Note_model")->setcollab($_POST['id'], $collaborator['id']);
+
+    if (!$result) {
+      Flasher::setFlash("error", "Failed to add collaborator");
+
+      header("Location: " . BASE_URL . "/note");
+      exit;
+    }
+
+    Flasher::setFlash("success", "New collaborator added");
+    header("Location: " . BASE_URL . "/note");
+  }
+
+  public function favorite($id)
+  {
+    $data = $this->model("Note_model")->get($id);
+    $result = $this->model("Note_model")->setfavorite($data);
 
     if ($result) {
-      // Succes
+      Flasher::setFlash("success", "Note updated");
     } else {
-      // Error
+      Flasher::setFlash("error", "Failed to update note");
     }
 
     header("Location: " . BASE_URL . "/note");

@@ -1,21 +1,22 @@
 <?php
-include_once ('../models/Note.php');
 
-function ReminderModal($note_id)
+function reminderModal()
 {
     return '
-    <div class="modal reminder-modal">
+    <div id="reminder-modal" class="modal reminder-modal">
         <h3>Set Reminder</h3>
 
-        <a href="home.php">x</a>
+        <button class="close-reminder-modal">x</button>
 
-        <form action="../controllers/ReminderController.php" method="POST">
+        <form action="' . BASE_URL . '/note/reminder" method="POST">
             <div>
                 <label for="remind_at">Date and Time:</label>
                 <input type="datetime-local" id="remind_at" name="remind_at" required>
             </div>
-            
-            <button type="submit" name="set_reminder" value="' . $note_id . '">REMIND ME</button>
+
+            <input type="hidden" name="note_id" value="">
+
+            <button type="submit">REMIND ME</button>
         </form>
     </div>
     ';

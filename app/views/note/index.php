@@ -46,25 +46,13 @@ if (!isset($_SESSION['user_id'])) {
       </div>
     </main>
 
-    <?php
-    // if (isset($_GET['reminder']))
-    //   echo ReminderModal($_GET['reminder']);
-    
-    // if (isset($_GET['update_note']))
-    //   echo UpdateModal($_GET['update_note']);
-    
-    // if (isset($_GET['add_collab']))
-    //   echo AddCollabModal($_GET['add_collab']);
-    
-    // if (isset($_GET['success']))
-    //   echo PopUp("success", $_GET['success']);
-    
-    // if (isset($_GET['error']))
-    //   echo PopUp("error", $_GET['error']);
-    ?>
+    <?= editModal() ?>
+    <?= collabModal() ?>
+    <?= reminderModal() ?>
 
-    <!-- <script src="../utils/js/reminder.js"></script> -->
-    <script src="<?= BASE_URL ?>/js/home.js"></script>
+    <script type="module" src="<?= BASE_URL ?>/js/nav.js"></script>
+    <script type="module" src="<?= BASE_URL ?>/js/note.js"></script>
+    <script type="module" src="<?= BASE_URL ?>/js/reminder.js"></script>
   </body>
 
 </html>

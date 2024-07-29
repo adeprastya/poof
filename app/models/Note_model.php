@@ -54,27 +54,27 @@ class Note_model
     return $this->db->execute();
   }
 
-  public function setfavorite($data)
+  public function setCollab($note_id, $collaborator_id)
   {
-    $favorite = ($data['favorite'] == 0) ? 1 : 0;
+    $collaborators = json_decode($this->get($note_id)['collaborator_id']) ?? [];
 
-    $this->db->query("UPDATE $this->table SET favorite=:favorite WHERE id=:id");
-    $this->db->bind('favorite', $favorite);
-    $this->db->bind('id', $data['id']);
+    $collaborators[] = $collaborator_id;
+
+    $this->db->query("UPDATE $this->table SET collaborator_id=:collaborators WHERE id=:id");
+    $this->db->bind('collaborators', json_encode($collaborators));
+    $this->db->bind('id', $note_id);
 
     return $this->db->execute();
   }
 
-  public function setCollab($data)
+  public function setfavorite($data)
   {
-    $collaborators = $this->get($data['id'])['collaborator_id'];
+    $favorite = ($data['is_favorite'] == 0) ? 1 : 0;
 
-    echo $collaborators;
+    $this->db->query("UPDATE $this->table SET is_favorite=:favorite WHERE id=:id");
+    $this->db->bind('favorite', $favorite);
+    $this->db->bind('id', $data['id']);
 
-    // $this->db->query("UPDATE $this->table SET collab=:collab WHERE id=:id");
-    // $this->db->bind('collab', $collaborators);
-    // $this->db->bind('id', $data['id']);
-
-    // return $this->db->execute();
+    return $this->db->execute();
   }
 }

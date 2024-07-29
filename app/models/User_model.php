@@ -25,6 +25,14 @@ class User_model
     return $this->db->single();
   }
 
+  public function getByEmail($email)
+  {
+    $this->db->query("SELECT * FROM $this->table WHERE email=:email");
+    $this->db->bind('email', $email);
+
+    return $this->db->single();
+  }
+
   public function authenticate($data)
   {
     $this->db->query("SELECT * FROM $this->table WHERE email=:email");

@@ -32,16 +32,8 @@ if (!isset($_SESSION['user_id'])) {
       </div>
     </main>
 
-    <?php
-    // if (isset($_GET['success']))
-    //   echo PopUp("success", $_GET['success']);
-    
-    // if (isset($_GET['error']))
-    //   echo PopUp("error", $_GET['error']);
-    ?>
-
-    <!-- <script src="../utils/js/reminder.js"></script> -->
-    <script type="module" src="<?= BASE_URL ?>/js/home.js"></script>
+    <script type="module" src="<?= BASE_URL ?>/js/nav.js"></script>
+    <script type="module" src="<?= BASE_URL ?>/js/reminder.js"></script>
   </body>
 
 </html>
