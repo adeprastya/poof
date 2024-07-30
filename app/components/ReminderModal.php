@@ -4,9 +4,9 @@ function reminderModal()
 {
     return '
     <div id="reminder-modal" class="modal reminder-modal">
+        <button class="close-reminder-modal close">x</button>
+        
         <h3>Set Reminder</h3>
-
-        <button class="close-reminder-modal">x</button>
 
         <form action="' . BASE_URL . '/note/reminder" method="POST">
             <div>

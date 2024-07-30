@@ -3,7 +3,9 @@ function editModal()
 {
     return '
     <div id="edit-modal" class="modal update-modal">
-        <button class="close-edit-modal">x</button>
+        <button class="close-edit-modal close">x</button>
+
+        <h3>Edit</h3>
 
         <form action="' . BASE_URL . '/note/edit" method="POST">
             <div>

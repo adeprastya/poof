@@ -1,83 +1,93 @@
 .modal {
-	width: clamp(300px, 70vw, 750px);
-	padding: 50px 30px;
-	border-radius: 10px;
-
 	z-index: 20;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 
+	width: clamp(300px, 90vw, 700px);
+	box-sizing: border-box;
+	padding: 1.5rem 1rem 3rem;
+	border-radius: 1rem;
+
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 
 	background-color: var(--color-light-1);
 	box-shadow: 0 0 10px #00000035;
 
-	animation: fade 0.6s linear both;
+	animation: fade 0.3s ease-in-out alternate both;
 
-	a {
+	.close {
 		position: absolute;
-		top: 5px;
-		right: 10px;
-		text-decoration: none;
-		color: var(--color-dark-1);
-		transition: color 0.3s ease;
+		top: 5%;
+		right: 2.5%;
+		color: var(--color-light-1);
+		width: 2rem;
+		height: 2rem;
+
+		border-radius: 50%;
 		cursor: pointer;
 	}
 
 	h3 {
-		font: bold 24px var(--font-1);
+		font: bold 1.5rem var(--font-1);
 		letter-spacing: 0.5px;
 		margin: 0 0 30px 0;
 	}
 
 	button {
-		padding: 6px;
+		width: 100%;
+		padding: 0.4rem 0;
 		border: none;
 		border-radius: 4px;
+
 		background: linear-gradient(110deg, var(--color-main-1), var(--color-main-2));
-		background-size: 200%;
+		background-size: 150%;
+
 		font: 16px var(--font-1);
 		letter-spacing: 0.5px;
 		color: var(--color-light-1);
+
 		cursor: pointer;
-		transition: all 0.5s ease;
+		transition: all 0.3s ease-in-out;
 
 		&:hover {
 			background-position: right;
-			box-shadow: 0 4px 8px var(--color-dark-03);
-			transform: translateY(-2px);
 		}
 	}
 
 	&.collab-modal,
 	&.reminder-modal {
 		form {
+			width: 100%;
+
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-			gap: 20px;
+			gap: 1.5rem;
 
 			div {
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
-				gap: 5px;
+				gap: 1rem;
+
+				label {
+					font: 1.2rem var(--font-1);
+				}
 
 				input {
-					padding: 0 10px;
-					font: 14px var(--font-1);
-					min-height: 24px;
+					padding: 0 1rem;
+					font: 1rem var(--font-1);
+					height: 2rem;
+					width: 90%;
 					border: 1px solid var(--color-dark-06);
 					border-radius: 4px;
 
 					&::placeholder {
-						font: 14px var(--font-1);
+						font: 1rem var(--font-1);
 					}
 				}
 			}
@@ -86,9 +96,9 @@
 
 	&.update-modal {
 		form {
-			width: 100%;
+			width: auto;
 			border-radius: 8px;
-			border: 3px solid var(--color-dark-3);
+			border: 1px solid var(--color-dark-3);
 			display: flex;
 			flex-direction: column;
 			gap: 10px;
